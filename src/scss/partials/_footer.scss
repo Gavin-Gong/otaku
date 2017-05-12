@@ -1,3 +1,28 @@
 .footer {
-
+  overflow: hidden;
+  position: relative;
+  // img {
+  //   position: absolute;
+  //   top: 0;
+  //   max-width: 100%;
+  //   z-index: 1;
+  //   top: 0;
+  // }
+  .content-wrapper {
+    z-index: 3;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 300px;
+    background: url(/assets/img/footer.png) center center / cover;
+    padding-top: 80px;
+    p {
+      max-width: 200px;
+      color: #000;
+      font-size: 16px;
+      &:first-child {
+        color: $white;
+      }
+    }
+  }
 }

@@ -1,10 +1,49 @@
+@import '../modules/lists';
 .header {
-
-}
-.logo {
-  margin: -58px 0 0 -100px;
-  @include position(absolute, 50% 0 0 50%);
-  img {
-
+  overflow: hidden;
+  position: relative;
+  // background: transparent url(../img/header.png) center center / cover;
+  // padding: 80px 0;
+  min-height: 600px;
+  padding: 20px;
+  background: $darkBlue;
+  >img {
+    position: absolute;
+    max-width: 100%;
+    top: 0;
+    left: 0;
+  }
+  .left-wrapper {
+    position: absolute;
+    top: 20px;
+    right: 120px;
+    z-index: 2;
+    input {
+      float: right;
+    }
+    .nav {
+      ul {
+        @include reset-list();
+        li {
+          margin-left: 40px;
+        }
+        a {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+  .avatar {
+    z-index: 13;
+    // float: right;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    overflow: hidden;
+    img {
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+    }
   }
 }
