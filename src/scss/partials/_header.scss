@@ -33,6 +33,15 @@
       }
     }
   }
+  .btns-wrapper {
+    position: absolute;
+    z-index: 13;
+    top: 200px;
+    left: 200px;
+    .signup-btn {
+      margin-top: 40px;
+    }
+  }
   .avatar {
     z-index: 13;
     // float: right;
