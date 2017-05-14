@@ -1,77 +1,31 @@
+@import '../modules/misc';
 .main {
   position: relative;
-  .gallery {
-    width: 100%;
-    background: $darkBlue url(../img/recommend.png) center center / cover;
-    color: $white;
-    padding: 80px 30px;
-    margin-top: -80px;
-    z-index: 333;
-    h2 {
-      text-align: center;
-      margin-bottom: 50px;
-    }
-    ul {
-      @include reset-list;
-      margin: 0 auto;
-      li {
-        width: 20%;
-        padding: 20px;
-        padding-left: 20px;
-        color: #fff;
-        border: 1px solid #fff;
-        cursor: pointer;
-      }
-    }
-  }
+  min-height: 4000px;
+  // overflow: hidden;
   .playround {
     position: relative;
+    // overflow: hidden;
     .bg-card {
       position: absolute;
-      top: 0;
+      top: -60px;
       left: 50%;
       transform: translateX(-50%);
-      z-index: -1;
-      width: 80%;
-      height: 1000px;
+      z-index: 3;
+      width: 1200px;
+      box-shadow: 0 5px 16px #000;
+      // width: 80%;
+      height: 4080px;
       background: $darkBlue;
     }
-    .cat {
-      color: $white;
-      h2 {
-        text-align: center;
-      }
-      .divider {
-        margin: 20px auto 40px;
-      }
-      .banner {
-        height: 360px;
-        >div {
-          display: inline-block;
-          width: 50%;
-          height: 360px;
-          color: $white;
-        }
-        .banner-left {
-          float: left;
-          padding: 60px 120px;
-          background: $deepBlue;
-        }
-        .banner-right {
-          text-align: center;
-          background: url(../img/banner.png) center center / cover no-repeat;
-          .mask {
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,.2);
-          }
-          i {
-            display: inline-block;
-            margin-top: 20%;
-            font-size: 30px;
-          }
-        }
-      }
+    .cat:nth-child(2) {
+      top: 1000px;
+    }
+    .cat:nth-child(3) {
+      top: 2000px;
+    }
+    .cat:nth-child(4) {
+      top: 3000px;
     }
   }
 }
