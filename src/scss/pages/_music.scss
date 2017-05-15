@@ -1,0 +1,65 @@
+#music {
+  // background: #ccc;
+  .header {
+    background: url(../img/music-header.png) center top / contain no-repeat,
+    url(../img/music-banner.png) center bottom / cover no-repeat;
+    min-height: 600px;
+    text-align: center;
+    .music-banner {
+      margin-top: 170px;
+      >ul {
+        display: inline-block;
+        @include reset-list;
+        margin: 0;
+        li {
+          display: block;
+          color: $white;
+          width: 250px;
+          padding: 14px 20px;
+          border: 1px solid rgba(255,255,255,.3);
+          cursor: pointer;
+          transition: all .5s ease-in-out;
+          .icon-music-play {
+            float: right;
+            background: url('../img/music-play.png') center center / contain no-repeat;
+          }
+          &:hover {
+            background: $orange;
+            box-shadow: 0 5px 10px rgba(0,0,0,.5);
+            transition: all .2s ease-out;
+            border: none;
+          }
+        }
+      }
+    }
+    .desc-card {
+      width: 250px;
+      // max-height: 172px;
+      margin-left: 40px;
+      display: inline-block;
+      vertical-align: top;
+      text-align: left;
+      background: $white;
+      padding: 20px;
+      p {
+        margin-bottom: 0;
+      }
+      div {
+          height: 40px;
+          width: 40px;
+          float: right;
+          background: $green;
+          border-radius: 50%;
+          text-align: center;
+          box-shadow: 0 5px 10px $green;
+          cursor: pointer;
+        i {
+          font-size: 18px;
+          vertical-align: top;
+          color: #fff;
+          line-height: 40px;
+        }
+      }
+    }
+  }
+}

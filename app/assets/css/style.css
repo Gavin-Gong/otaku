@@ -490,3 +490,59 @@ a {
   h2,
   h3 {
     page-break-after: avoid; } }
+
+#music .header {
+  background: url(../img/music-header.png) center top/contain no-repeat, url(../img/music-banner.png) center bottom/cover no-repeat;
+  min-height: 600px;
+  text-align: center; }
+  #music .header .music-banner {
+    margin-top: 170px; }
+    #music .header .music-banner > ul {
+      display: inline-block;
+      list-style: none;
+      padding-left: 0;
+      margin: 0; }
+      #music .header .music-banner > ul li {
+        display: inline-block;
+        padding-left: 0;
+        margin-left: 0; }
+      #music .header .music-banner > ul li {
+        display: block;
+        color: #eee;
+        width: 250px;
+        padding: 14px 20px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        cursor: pointer;
+        transition: all .5s ease-in-out; }
+        #music .header .music-banner > ul li .icon-music-play {
+          float: right;
+          background: url("../img/music-play.png") center center/contain no-repeat; }
+        #music .header .music-banner > ul li:hover {
+          background: #f67d3c;
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+          transition: all .2s ease-out;
+          border: none; }
+  #music .header .desc-card {
+    width: 250px;
+    margin-left: 40px;
+    display: inline-block;
+    vertical-align: top;
+    text-align: left;
+    background: #eee;
+    padding: 20px; }
+    #music .header .desc-card p {
+      margin-bottom: 0; }
+    #music .header .desc-card div {
+      height: 40px;
+      width: 40px;
+      float: right;
+      background: #00cc87;
+      border-radius: 50%;
+      text-align: center;
+      box-shadow: 0 5px 10px #00cc87;
+      cursor: pointer; }
+      #music .header .desc-card div i {
+        font-size: 18px;
+        vertical-align: top;
+        color: #fff;
+        line-height: 40px; }
