@@ -22,6 +22,7 @@
       float: right;
     }
     .nav {
+      margin-bottom: 10px;
       ul {
         @include reset-list();
         li {
@@ -42,6 +43,9 @@
     .signup-btn {
       margin-top: 40px;
     }
+    button {
+      padding: 6px 20px;
+    }
   }
   .avatar {
     z-index: 13;
@@ -52,9 +56,13 @@
     overflow: hidden;
     img {
       border-radius: 50%;
-      width: 60px;
-      height: 60px;
+      width: 80px;
+      height: 80px;
     }
+  }
+  .logo {
+    position: absolute;
+    top: 20px;
   }
     .gallery {
     width: 100%;
@@ -70,6 +78,7 @@
     ul {
       @include reset-list;
       margin: 0 auto;
+      overflow: hidden;
       li {
         float: left;
         width: 20%;

@@ -30,19 +30,21 @@
     z-index: 2; }
     .header .left-wrapper input {
       float: right; }
-    .header .left-wrapper .nav ul {
-      list-style: none;
-      padding-left: 0;
-      margin: 0; }
-      .header .left-wrapper .nav ul li {
-        display: inline-block;
+    .header .left-wrapper .nav {
+      margin-bottom: 10px; }
+      .header .left-wrapper .nav ul {
+        list-style: none;
         padding-left: 0;
-        margin-left: 0; }
-      .header .left-wrapper .nav ul li {
-        margin-left: 50px; }
-      .header .left-wrapper .nav ul a {
-        font-size: 22px;
-        font-weight: 500; }
+        margin: 0; }
+        .header .left-wrapper .nav ul li {
+          display: inline-block;
+          padding-left: 0;
+          margin-left: 0; }
+        .header .left-wrapper .nav ul li {
+          margin-left: 50px; }
+        .header .left-wrapper .nav ul a {
+          font-size: 22px;
+          font-weight: 500; }
   .header .btns-wrapper {
     position: absolute;
     z-index: 13;
@@ -50,6 +52,8 @@
     left: 200px; }
     .header .btns-wrapper .signup-btn {
       margin-top: 40px; }
+    .header .btns-wrapper button {
+      padding: 6px 20px; }
   .header .avatar {
     z-index: 13;
     position: absolute;
@@ -58,8 +62,11 @@
     overflow: hidden; }
     .header .avatar img {
       border-radius: 50%;
-      width: 60px;
-      height: 60px; }
+      width: 80px;
+      height: 80px; }
+  .header .logo {
+    position: absolute;
+    top: 20px; }
   .header .gallery {
     width: 100%;
     color: #eee;
@@ -73,7 +80,8 @@
       list-style: none;
       padding-left: 0;
       margin: 0;
-      margin: 0 auto; }
+      margin: 0 auto;
+      overflow: hidden; }
       .header .gallery ul li {
         display: inline-block;
         padding-left: 0;
@@ -344,7 +352,7 @@
   color: #eee;
   border: 2px solid #3b93ff;
   text-align: center;
-  padding: 8px 40px;
+  padding: 8px 10px;
   font-size: 20px;
   cursor: pointer;
   background: transparent; }
@@ -404,12 +412,12 @@ a {
 .card-collection {
   color: #000;
   background: #86c7a9;
-  padding: 30px 20px 10px; }
+  padding: 60px; }
   .card-collection > ul {
     list-style: none;
     padding-left: 0;
     margin: 0;
-    margin-left: -30px; }
+    margin-left: -60px; }
     .card-collection > ul li {
       display: inline-block;
       padding-left: 0;
@@ -417,19 +425,22 @@ a {
     .card-collection > ul > li {
       position: relative;
       float: left;
-      height: 280px;
-      width: calc((97% - 60px) / 3);
-      margin-left: 30px;
-      margin-bottom: 30px;
+      height: 260px;
+      width: calc((100% - 180px) / 3);
+      margin-left: 60px;
       background: url(../img/card.png) top/contain no-repeat;
       cursor: pointer;
       border-radius: 6px; }
       .card-collection > ul > li .inner-card {
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius: 6px;
         position: absolute;
         width: 100%;
         bottom: 0;
         background: #eee;
         padding: 14px 20px; }
+        .card-collection > ul > li .inner-card h4 {
+          margin: 0 auto 10px; }
         .card-collection > ul > li .inner-card .slide {
           overflow: hidden;
           height: 0;
@@ -461,6 +472,31 @@ a {
         .card-collection > ul > li:hover .slide {
           height: 100px;
           transition: all 0.5s ease-out; }
+
+.pagination-wrapper {
+  text-align: center; }
+  .pagination-wrapper .pagination {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+    display: inline-block;
+    margin-left: -10px; }
+    .pagination-wrapper .pagination li {
+      display: inline-block;
+      padding-left: 0;
+      margin-left: 0; }
+    .pagination-wrapper .pagination li {
+      margin-left: 10px; }
+    .pagination-wrapper .pagination button {
+      padding: 6px 10px;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      background: #fff;
+      border-radius: 5px; }
+    .pagination-wrapper .pagination button:focus {
+      background: #3fd5c5;
+      color: #fff; }
 
 @media print {
   * {
@@ -503,10 +539,10 @@ a {
 
 #music .header {
   background: url(../img/music-header.png) center top/contain no-repeat, url(../img/music-banner.png) center bottom/cover no-repeat;
-  min-height: 1000px;
+  min-height: 700px;
   text-align: center; }
   #music .header .music-banner {
-    margin-top: 170px; }
+    margin-top: 240px; }
     #music .header .music-banner > ul {
       display: inline-block;
       list-style: none;
@@ -620,4 +656,5 @@ a {
       #music .music-main .matrix-layout .card-collection > ul {
         margin-left: -30px; }
       #music .music-main .matrix-layout .card-collection > ul > li {
-        margin-left: 30px; }
+        margin-left: 30px;
+        margin-bottom: 30px; }
