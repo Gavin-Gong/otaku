@@ -3,7 +3,7 @@
   .header {
     background: url(../img/music-header.png) center top / contain no-repeat,
     url(../img/music-banner.png) center bottom / cover no-repeat;
-    min-height: 600px;
+    min-height: 1000px;
     text-align: center;
     .music-banner {
       margin-top: 170px;
@@ -58,6 +58,88 @@
           vertical-align: top;
           color: #fff;
           line-height: 40px;
+        }
+      }
+    }
+  }
+  .music-main {
+    position: relative;
+    .playround {
+      position: relative;
+      min-height: 1100px;
+      margin: auto;
+      width: 1300px;
+      background: $deepBlue;
+    }
+    .op-bar {
+      position: absolute;
+      top: -28px;
+      width: 100%;
+      overflow: hidden;
+      .status {
+        display: inline-block;
+        background: #fff;
+        border-radius: 100px;
+        padding: 12px 40px;
+        height: 50px;
+        margin-left: 60px;
+        vertical-align: middle;
+        span {
+          font-size: 22px;
+          line-height: 1;
+        }
+        i {
+          vertical-align: top;
+          color: $blue;
+          font-size: 20px;
+          background: transparent;
+          text-shadow: 0 5px 10px rgba(0,0,0,.5);
+        }
+        i:first-child {
+
+        }
+        i:last-child {
+
+        }
+      }
+      ul {
+        @include reset-list;
+        float: right;
+        margin-right: 60px;
+        li {
+          background: url(../img/music-play-bar.png) center / contain no-repeat;
+          width: 60px;
+          height: 60px;
+          margin-left: 20px;
+        }
+        li:nth-child(1) {
+          background: url(../img/music-filter.png) center / contain no-repeat;
+        }
+        li:nth-child(2) {
+          background: url(../img/music-matrix.png) center / contain no-repeat;
+        }
+        li:nth-child(3) {
+          background: url(../img/music-play-bar.png) center / contain no-repeat;
+        }
+        li:nth-child(4) {
+          background: url(../img/music-ctx-bar.png) center / contain no-repeat;
+        }
+      }
+    }
+    .matrix-layout {
+      // margin-top: 100px;
+      padding-top: 30px;
+      height: 1000px;
+      margin: 0 auto;
+      .card-collection {
+        // right: 50%;
+        // transform: translateX(-50%);
+        background: transparent;
+        >ul {
+          margin-left: -30px;
+        }
+        >ul>li {
+          margin-left: 30px;
         }
       }
     }
