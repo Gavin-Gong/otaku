@@ -71,6 +71,7 @@
       @include reset-list;
       margin: 0 auto;
       li {
+        float: left;
         width: 20%;
         height: 260px;
         padding: 20px;

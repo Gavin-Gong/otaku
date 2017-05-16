@@ -61,19 +61,15 @@
   }
   .card-collections {
     width:  1300px;
-    // height: 2000px;
     margin: 0 auto;
-    // overflow: hidden;
     position: relative;
     .label {
-      // @include shadow;
       position: absolute;
       margin: 30px auto 30px;
       left: 0px;
       color: $white;
       background: $darkBlue;
       padding: 16px 40px;
-      // height: 80px;
       min-width: 330px;
       font-size: 24px;
       font-weight: normal;
@@ -83,77 +79,6 @@
         letter-spacing: 10px;
         &:last-child {
           color: $orange;
-        }
-      }
-    }
-    .card-collection {
-      margin-top: 120px;
-      position: absolute;
-      right: 0px;
-      width: 1200px;
-      color: #000;
-      background: $tea;
-      padding: 30px 20px 10px;
-      >ul {
-        @include reset-list;
-        >li {
-          position: relative;
-          height: 280px;
-          width: calc((99% - 60px) / 3);
-          margin-left: 30px;
-          background: url(../img/card.png) top / contain no-repeat;
-          cursor: pointer;
-          border-radius: 6px;
-
-          .inner-card {
-            position: absolute;
-            width: 100%;
-            // height: 200px;
-            bottom: 0;
-            // height: 100px;
-            background: $white;
-            padding: 14px 20px;
-            .slide {
-              overflow: hidden;
-              height: 0;
-              transition: all 0.5s ease-out;
-              p:last-child {
-                margin-top: 20px;
-                padding-bottom: 14px;
-                border-bottom: 1px solid $gray;
-              }
-            }
-            .footer-bar {
-              ul {
-                @include reset-list;
-                li {
-                  margin-left: 10px;
-                  &:first-child {
-                    margin-left: 0;
-                  }
-                  &:last-child {
-                    float: right;
-                  }
-                  .icon-star {
-                    background: url(../img/star.png) center / contain no-repeat;
-                  }
-                  .icon-play {
-                    background: url(../img/play.png) center / contain no-repeat;
-                  }
-                }
-              }
-            }
-          }
-          &:first-child {
-            margin-left: 0;
-          }
-          &:hover  {
-            @include shadow;
-            .slide {
-              height: 100px;
-              transition: all 0.5s ease-out;
-            }
-          }
         }
       }
     }
