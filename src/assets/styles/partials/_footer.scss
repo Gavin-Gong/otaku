@@ -1,0 +1,48 @@
+@import '~styles/modules/lists';
+@import '~styles/modules/vars';
+.footer {
+  overflow: hidden;
+  position: relative;
+  padding-top: 100px;
+  .contact {
+    text-align: center;
+    padding-bottom: 80px;
+    ul {
+      @include reset-list;
+      margin: 0 auto;
+      display: inline-block;
+      li {
+        width: 80px;
+        height: 80px;
+        margin-left: 250px;
+      }
+      li:nth-child(1) {
+        margin-left: 0;
+        background: url(~img/wechat.png) center / contain no-repeat;
+      }
+      li:nth-child(2) {
+        background: url(~img/weibo.png) center / contain no-repeat;
+      }
+      li:nth-child(3) {
+        background: url(~img/email.png) center / contain no-repeat;
+      }
+    }
+  }
+  .content-wrapper {
+    z-index: 3;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 400px;
+    background: #fff  url(~img/footer.png) bottom / contain no-repeat;
+    padding-top: 80px;
+    p {
+      max-width: 200px;
+      color: #000;
+      font-size: 16px;
+      &:first-child {
+        color: $white;
+      }
+    }
+  }
+}

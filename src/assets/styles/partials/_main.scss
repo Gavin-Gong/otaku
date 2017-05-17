@@ -1,0 +1,42 @@
+@import '../modules/misc';
+@import '../modules/vars';
+
+.main {
+  position: relative;
+  min-height: 4000px;
+  // overflow: hidden;
+  .playround {
+    position: relative;
+    // overflow: hidden;
+    .bg-card {
+      position: absolute;
+      top: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      width: 1200px;
+      box-shadow: 0 5px 16px #000;
+      // width: 80%;
+      height: 4080px;
+      background: $darkBlue;
+    }
+    .cat:nth-child(2) {
+      top: 1000px;
+    }
+    .cat:nth-child(3) {
+      top: 2000px;
+    }
+    .cat:nth-child(4) {
+      top: 3000px;
+    }
+    .card-collection {
+      width: 1200px;
+      margin-top: 120px;
+      position: absolute;
+      right: 0px;
+    }
+  }
+}
+
+// music
+

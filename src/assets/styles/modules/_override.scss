@@ -1,0 +1,40 @@
+#app {
+  .el-select {
+    width: 200px;
+    position: relative;
+    top: -4px;
+    input {
+      border: none;
+      font-size: 20px;
+      border-radius: 50px;
+      text-align: center;
+      height: 50px;
+    }
+    .el-input__inner {
+      padding-right: 10px;
+    }
+    .el-input__icon {
+      display: none;
+    }
+  }
+}
+
+body {
+  .el-select-dropdown {
+    background: transparent;
+    box-shadow: none;
+    border: none;
+  }
+  .el-select-dropdown__list {
+  }
+  .el-select-dropdown__item {
+    border-radius: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+    background: #fff;
+    padding-left: 18px;
+    span {
+      font-size: 18px;
+    }
+  }
+}
