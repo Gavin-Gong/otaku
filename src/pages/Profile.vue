@@ -160,9 +160,7 @@ export default {
       this.replyField = ''
     },
     deleteMsg (index) {
-      console.log(index)
       this.replyList2.splice(index, 1)
-      console.log(this.replyList2)
     },
     showReplyBar (index) {
       let barStyle = document.getElementById(`reply-bar-${index}`).style
