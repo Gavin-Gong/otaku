@@ -1,23 +1,23 @@
-.pagination-wrapper {
-  text-align: center;
-  .pagination {
-    @include reset-list;
-    display: inline-block;
-    margin-left: -10px;
-    li {
-      margin-left: 10px;
-    }
-    button {
-      padding: 6px 10px;
-      cursor: pointer;
-      border: none;
-      outline: none;
-      background: #fff;
-      border-radius: 5px;
-    }
-    button:focus {
-      background: $teal;
-      color: #fff;
-    }
-  }
-}
+// .pagination-wrapper {
+//   text-align: center;
+//   .pagination {
+//     @include reset-list;
+//     display: inline-block;
+//     margin-left: -10px;
+//     li {
+//       margin-left: 10px;
+//     }
+//     button {
+//       padding: 6px 10px;
+//       cursor: pointer;
+//       border: none;
+//       outline: none;
+//       background: #fff;
+//       border-radius: 5px;
+//     }
+//     button:focus {
+//       background: $teal;
+//       color: #fff;
+//     }
+//   }
+// }
