@@ -4,6 +4,7 @@ import Home from '@/components/Home'
 import Music from '@/pages/Music'
 import Profile from '@/pages/Profile'
 import Detail from '@/pages/Detail'
+import Search from '@/pages/Search'
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ export default new Router({
       path: '/detail',
       name: 'Detail',
       component: Detail
+    },
+    {
+      path: '/search',
+      name: 'Search',
+      component: Search
     }
   ]
 })

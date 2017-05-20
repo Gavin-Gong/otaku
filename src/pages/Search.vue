@@ -1,20 +1,13 @@
 <template>
-  <div id="music">
+  <div id="search">
     <x-header>
-      <div class="music-banner">
-        <ul>
-          <li>Piano cover <i class="icon-music-play"></i></li>
-          <li>Piano cover <i class="icon-music-play"></i></li>
-          <li>Piano cover <i class="icon-music-play"></i></li>
-          <li>Piano cover <i class="icon-music-play"></i></li>
-        </ul>
-        <div class="desc-card">
-          <p>Aimer第3张全长专辑《DAWN》是“不眠之夜物语”的最终章，穿越不眠之夜，遇见午夜的太阳，然后，终于迎来真</p>
-          <div><i class="iconfont icon-chakan"></i></div>
-        </div>
+      <div class="search-box">
+        <h3>OTAKU</h3>
+        <input type="text">
+        <button>搜索</button>
       </div>
     </x-header>
-        <main class="music-main" role="main">
+    <main class="search-main" role="main">
       <section class="playround">
         <section class="op-bar">
           <div class="status">
@@ -76,72 +69,47 @@ export default {
 <style lang="scss">
 @import '~styles/mixins';
 @import '~styles/modules/vars';
-#music {
+#search {
   // background: #ccc;
   .header {
-    background: url(~img/music-header.png) center top / contain no-repeat,
-    url(~img/music-banner.png) center bottom / cover no-repeat;
-    min-height: 700px;
+    background: url(~img/search-header.png) center top / contain no-repeat;
+    min-height: 455px;
     text-align: center;
-    .music-banner {
-      margin-top: 240px;
-      >ul {
-        display: inline-block;
-        @include reset-list;
-        margin: 0;
-        li {
-          display: block;
-          color: $white;
-          width: 250px;
-          padding: 14px 20px;
-          border: 1px solid rgba(255,255,255,.3);
-          cursor: pointer;
-          transition: all .5s ease-in-out;
-          .icon-music-play {
-            float: right;
-            background: url('~img/music-play.png') center center / contain no-repeat;
-          }
-          &:hover {
-            background: $orange;
-            box-shadow: 0 5px 10px rgba(0,0,0,.5);
-            transition: all .2s ease-out;
-            border: none;
-          }
+    .search-box {
+      margin-top: 220px;
+      * {
+        display: inline-block
+      }
+      h3 {
+        font-weight: normal;
+        color: $white;
+      }
+      input {
+        margin: 0 20px;
+        border: 1px solid #fff;
+        background: transparent;
+        padding: 6px;
+        border-radius: 5px;
+        width: 250px;
+        color: $white;
+        &:focus {
+          outline: none;
         }
       }
-    }
-    .desc-card {
-      width: 250px;
-      // max-height: 172px;
-      margin-left: 40px;
-      display: inline-block;
-      vertical-align: top;
-      text-align: left;
-      background: $white;
-      padding: 20px;
-      p {
-        margin-bottom: 0;
-      }
-      div {
-          height: 40px;
-          width: 40px;
-          float: right;
-          background: $green;
-          border-radius: 50%;
-          text-align: center;
-          box-shadow: 0 5px 10px $green;
-          cursor: pointer;
-        i {
-          font-size: 18px;
-          vertical-align: top;
-          color: #fff;
-          line-height: 40px;
-        }
+      button {
+        outline: none;
+        border: none;
+        background: $teal;
+        color: $white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
       }
     }
   }
-  .music-main {
+  .search-main {
     position: relative;
+    margin-top: -3px;
     .playround {
       position: relative;
       min-height: 1100px;
@@ -193,6 +161,7 @@ export default {
           width: 60px;
           height: 60px;
           margin-left: 20px;
+          cursor: pointer;
         }
         li:nth-child(1) {
           background: url(~img/music-filter.png) center / contain no-repeat;
@@ -225,5 +194,4 @@ export default {
     }
   }
 }
-
 </style>

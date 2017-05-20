@@ -8,3 +8,9 @@
     margin-left: 0;
   }
 }
+
+@mixin radius-card($color: $beige) {
+  border-radius: 6px;
+  background: $color;
+  padding: 10px;
+}

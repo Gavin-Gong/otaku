@@ -182,11 +182,6 @@ export default {
 <style lang="scss">
 @import '~styles/modules/vars';
 @import '~styles/mixins';
-@mixin radius-card($color: $beige) {
-  border-radius: 6px;
-  background: $color;
-  padding: 10px;
-}
 @mixin avatar {
   width: 60px;
   height: 60px;
