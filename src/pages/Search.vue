@@ -24,14 +24,14 @@
           </div>
           <ul class="cat-list">
             <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
+            <li @click="handleTabChange('card')" tabindex="1"></li>
+            <li @click="handleTabChange('video')" tabindex="2"></li>
+            <li @click="handleTabChange('image')" tabindex="3"></li>
           </ul>
         </section>
         <section class="matrix-layout">
           <card-list>
-            <card v-for="n in 9"></card>
+            <card v-for="(data, index) in filterData" :data="data" :key="index"></card>
           </card-list>
         </section>
         <section class="pagination-wrapper">
@@ -47,6 +47,7 @@
 </template>
 
 <script>
+import { reverse } from 'lodash'
 import XHeader from '@/components/Header'
 import Card from '@/components/Card'
 import CardList from '@/components/CardList'
@@ -60,7 +61,39 @@ export default {
   data () {
     return {
       slecOptions: [ '最新', '最热' ],
-      slecVal: '最新'
+      slecVal: '最新',
+      cardListData: [
+        { type: 'card', title: 'xx', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: require('img/card.png') },
+        { type: 'card', title: 'x333', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: require('img/card.png') },
+        { type: 'video', title: 'x4444', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: require('img/card.png') },
+        { type: 'image', title: 'x555', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: require('img/card.png') },
+        { type: 'video', title: '7777x', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: require('img/card.png') },
+        { type: 'image', title: 'x88', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: require('img/card.png') },
+        { type: 'card', title: '999x', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: require('img/card.png') },
+        { type: 'image', title: '000x', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: require('img/card.png') },
+        { type: 'card', title: 'x', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: require('img/card.png') }
+      ],
+      filterKey: '',
+      sortKey: ''
+    }
+  },
+  created () {
+    console.log(reverse(this.cardListData))
+  },
+  methods: {
+    handleTabChange (type) {
+      this.filterKey = type
+    },
+    handleSort () {
+      this.sortKey = Math.random()
+    }
+  },
+  computed: {
+    filterData () {
+      const filterKey = this.filterKey
+      /*eslint-disable*/
+      const sortKey = this.sortKey // just make is reactive
+      return reverse(this.cardListData).filter(item => item.type === filterKey || this.filterKey === '')
     }
   }
 }
@@ -112,9 +145,9 @@ export default {
     margin-top: -3px;
     .playround {
       position: relative;
-      min-height: 1100px;
       margin: auto;
       width: 1300px;
+      padding-bottom: 30px;
       background: $deepBlue;
     }
     .op-bar {
@@ -122,6 +155,7 @@ export default {
       top: -28px;
       width: 100%;
       overflow: hidden;
+      user-select: none;
       .status {
         display: inline-block;
         position: relative;
@@ -162,6 +196,11 @@ export default {
           height: 60px;
           margin-left: 20px;
           cursor: pointer;
+          &:focus {
+            border: none;
+            outline: none;
+            background: $blue;
+          }
         }
         li:nth-child(1) {
           background: url(~img/music-filter.png) center / contain no-repeat;
@@ -179,7 +218,7 @@ export default {
     }
     .matrix-layout {
       padding-top: 30px;
-      height: 1000px;
+      overflow: hidden;
       margin: 0 auto;
       .card-collection {
         background: transparent;

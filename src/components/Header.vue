@@ -14,19 +14,19 @@
         <nav class="nav" role="navigation">
           <ul>
             <li>
-              <a href="/">首页</a>
+              <router-link :to="{ name: 'Home' }">漫评</router-link>
             </li>
             <li>
-              <a href="/comment.html">漫评</a>
+              <router-link :to="{ name: 'Detail' }">漫评</router-link>
             </li>
             <li>
-              <a href="/music.html">音乐</a>
+              <router-link :to="{ name: 'Music' }">音乐</router-link>
             </li>
             <li>
-              <a href="/mad.html">MAD / AMV</a>
+              <router-link :to="{ name: 'Music' }">MAD / AMV</router-link>
             </li>
             <li>
-              <a href="/tongren.html">同人</a>
+              <router-link :to="{ name: 'Search' }"></router-link>
             </li>
           </ul>
         </nav>

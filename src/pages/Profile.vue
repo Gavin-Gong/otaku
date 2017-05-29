@@ -221,6 +221,17 @@ export default {
   .pagination {
     display: inline-block;
     margin: auto;
+    > * {
+      margin-left: 10px;
+      border-radius: 5px;
+    }
+    .number {
+      margin-left: 10px;
+      border-radius: 5px;
+      &:first-child {
+        margin-left: 0;
+      }
+    }
   }
 }
 #profile {

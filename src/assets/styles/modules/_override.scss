@@ -33,7 +33,12 @@ body {
     margin-bottom: 10px;
     background: #fff;
     padding-left: 18px;
+    position: relative;
+    text-align: center;
+    top: 5px;
     span {
+      position: relative;
+      left: -4px;
       font-size: 18px;
     }
   }
