@@ -5,7 +5,7 @@
           <img src="~img/logo.png" alt="Logo">
         </a>
       </div>
-      <div class="avatar">
+      <div class="avatar" v-show="$store.state.isAuth">
         <a href="">
           <img src="~img/avatar.jpg" alt="Logo">
         </a>
@@ -30,7 +30,7 @@
             </li>
           </ul>
         </nav>
-        <input type="text" class="ot-input" placeholder="搜索">
+        <input type="text" class="ot-input" placeholder="搜索" @keyup.enter.self="$router.push({name: 'Search'})">
       </div>
       <slot></slot>
     </header>

@@ -18,7 +18,7 @@
       <section class="playround">
         <section class="op-bar">
           <div class="status">
-            <el-select v-model="slecVal" placeholder="请选择">
+            <el-select v-model="slecVal" placeholder="请选择" @change="handleSort">
               <el-option
                 v-for="item in slecOptions"
                 :key="item"
@@ -27,18 +27,18 @@
               </el-option>
             </el-select>
             <i class="iconfont icon-music"></i>
-            <i class="iconfont icon-qiehuan"></i>
+            <!--<i class="iconfont icon-qiehuan"></i>-->
           </div>
           <ul class="cat-list">
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
+            <li tabindex="-1"></li>
+            <li @click="handleTabChange('card')" tabindex="1"></li>
+            <li @click="handleTabChange('video')" tabindex="2"></li>
+            <li @click="handleTabChange('image')" tabindex="3"></li>
           </ul>
         </section>
         <section class="matrix-layout">
           <card-list>
-            <card v-for="n in 9"></card>
+            <card v-for="item in filterData" :data="item"></card>
           </card-list>
         </section>
         <section class="pagination-wrapper">
@@ -57,6 +57,7 @@
 import XHeader from '@/components/Header'
 import Card from '@/components/Card'
 import CardList from '@/components/CardList'
+import mixin from '../mixin'
 
 export default {
   components: {
@@ -64,10 +65,22 @@ export default {
     Card,
     CardList
   },
+  mixins: [mixin],
   data () {
     return {
       slecOptions: [ '最新', '最热' ],
-      slecVal: '最新'
+      slecVal: '最新',
+      cardListData: [
+        { type: 'card', title: 'xx', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: require('img/card.png') },
+        { type: 'card', title: 'x333', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: require('img/card.png') },
+        { type: 'video', title: 'x4444', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: require('img/card.png') },
+        { type: 'image', title: 'x555', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: require('img/card.png') },
+        { type: 'video', title: '7777x', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: require('img/card.png') },
+        { type: 'image', title: 'x88', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: require('img/card.png') },
+        { type: 'card', title: '999x', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: require('img/card.png') },
+        { type: 'image', title: '000x', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: require('img/card.png') },
+        { type: 'card', title: 'x', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: require('img/card.png') }
+      ]
     }
   }
 }
@@ -144,10 +157,11 @@ export default {
     position: relative;
     .playround {
       position: relative;
-      min-height: 1100px;
+      // min-height: 1100px;
       margin: auto;
       width: 1300px;
       background: $deepBlue;
+      padding-bottom: 40px;
     }
     .op-bar {
       position: absolute;
@@ -184,7 +198,7 @@ export default {
           // z-index: -1;
         }
       }
-      ul {
+      ul.cat-list {
         @include reset-list;
         float: right;
         margin-right: 60px;
@@ -193,24 +207,40 @@ export default {
           width: 60px;
           height: 60px;
           margin-left: 20px;
+          &:focus {
+            background: url(~img/music-play-bar.png) center / contain no-repeat;
+            border: none;
+            outline: none;
+          }
+          cursor: pointer;
         }
         li:nth-child(1) {
           background: url(~img/music-filter.png) center / contain no-repeat;
         }
         li:nth-child(2) {
-          background: url(~img/music-matrix.png) center / contain no-repeat;
+          background: url(~img/card-blue.png) center / 35% no-repeat, url(~img/opbar-bg-white.png) center / contain no-repeat;
+          &:focus {
+            background: url(~img/card-white.png) center / 35% no-repeat, url(~img/opbar-bg-blue.png) center / contain no-repeat;
+          }
         }
         li:nth-child(3) {
-          background: url(~img/music-play-bar.png) center / contain no-repeat;
+          background: url(~img/play-blue.png) center / 35% no-repeat, url(~img/opbar-bg-white.png) center / contain no-repeat;
+          &:focus {
+            background: url(~img/play-white.png) center / 35% no-repeat, url(~img/opbar-bg-blue.png) center / contain no-repeat;
+          }
         }
         li:nth-child(4) {
-          background: url(~img/music-ctx-bar.png) center / contain no-repeat;
+          background: url(~img/image-blue.png) center / 35% no-repeat, url(~img/opbar-bg-white.png) center / contain no-repeat;
+          &:focus {
+            background: url(~img/image-white.png) center / 35% no-repeat, url(~img/opbar-bg-blue.png) center / contain no-repeat;
+          }
         }
       }
     }
     .matrix-layout {
       padding-top: 30px;
-      height: 1000px;
+      // height: 1000px;
+      overflow: hidden;
       margin: 0 auto;
       .card-collection {
         background: transparent;
@@ -222,6 +252,9 @@ export default {
           margin-bottom: 30px;
         }
       }
+    }
+    .pagination-wrapper {
+      margin-bottom: 40px;
     }
   }
 }

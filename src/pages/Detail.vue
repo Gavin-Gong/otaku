@@ -24,6 +24,10 @@
       <div class="inner-wrapper">
         <!--TODO: video link-->
         <embed height="615" width="100%" quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="//static.hdslb.com/miniloader.swf" flashvars="aid=372233&page=1" pluginspage="//www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"></embed>
+        <!--<div class="text-detail">dsssssssssssssssssdgihsiuhd
+          fhdshfuihd
+          fdsf
+        </div>-->
         <div class="comment-wrapper">
           <div class="reply-bar">
             <div class="icon-wrapper">
@@ -36,7 +40,7 @@
           </div>
           <ul class="comment-list">
             <li class="comment-item" v-for="(comment, index) in commentList">
-              <img :src="avatar(60, 60)" alt="" class="avatar">
+              <img :src="comment.avatar" alt="" class="avatar">
               <div class="comment-content">
                 <h3>{{comment.name}}</h3>
                 <p class="time">{{comment.created_at}}</p>
@@ -49,7 +53,7 @@
                 </div>
                 <ul class="child-comment" v-if="comment.children && comment.children.length">
                   <li v-for="item in comment.children">
-                    <img :src="avatar(60, 60)" alt="" class="avatar">
+                    <img :src="item.avatar" alt="" class="avatar">
                     <div class="childComment-content">
                       <h4>{{item.name}}</h4>
                       <p>{{item.body}}</p>
@@ -83,11 +87,11 @@ export default {
     return {
       /*eslint-disable*/
       commentList: [
-        { name: '阿尔', created_at: '2017-01-11', body: 'gydsgf ugd ygyfgd yugfu ygduy guyf guy', model: '', children: [
-          { name: 'fd', body: 'fdfdfdfdfdfdd' },
-          { name: 'fd', body: 'fdfdfdfdfdfdd' }
+        { avatar: this.avatar(60,60), name: '阿尔', created_at: '2017-01-11', body: 'gydsgf ugd ygyfgd yugfu ygduy guyf guy', model: '', children: [
+          { avatar: this.avatar(60,60), name: 'fd', body: 'fdfdfdfdfdfdd' },
+          { avatar: this.avatar(60,60), name: 'fd', body: 'fdfdfdfdfdfdd' }
         ]},
-        { name: 'fdsfd', created_at: '2017-01-22', body: 'dsuih gfg iud u gu ', model: '', children: [] }
+        { avatar: this.avatar(60,60), name: 'fdsfd', created_at: '2017-01-22', body: 'dsuih gfg iud u gu ', model: '', children: [] }
       ],
       topCommentField: '',
       childCommentField: '',
@@ -102,6 +106,7 @@ export default {
     },
     handleTopReply() {
       this.commentList.unshift({
+        avatar: this.avatar_1,
         name: '我',
         body: this.topCommentField,
         created_at: '刚刚',
@@ -110,6 +115,7 @@ export default {
     },
     handleReply(index) {
       this.commentList[index].children.push({
+        avatar: this.avatar_1,
         name: '我',
         body: this.commentList[index].model
       })
@@ -160,10 +166,10 @@ export default {
             padding-left: 26px;
             &:nth-child(1) {
               margin-left: 0;
-              background: url(~img/play-white.png) left center / contain no-repeat;
+              background: url(~img/icon-play-white.png) left center / contain no-repeat;
             }
             &:nth-child(2) {
-              background: url(~img/star-white.png) left center / contain no-repeat;
+              background: url(~img/icon-star-white.png) left center / contain no-repeat;
             }
           }
           p {
@@ -202,6 +208,10 @@ export default {
       width: 1200px;
       margin-top: -180px;
       padding-bottom: 20px;
+      .text-detail {
+        padding: 40px 116px;
+        color: #ccc;
+      }
       .comment-wrapper {
         width: 58%;
         margin: 30px auto;

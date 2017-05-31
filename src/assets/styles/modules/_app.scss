@@ -12,3 +12,43 @@ a {
   @include reset-list;
   list-style: none;
 }
+
+// for op-bar
+ul.cat-list {
+  @include reset-list;
+  float: right;
+  margin-right: 60px;
+  li {
+    background: url(~img/music-play-bar.png) center / contain no-repeat;
+    width: 60px;
+    height: 60px;
+    margin-left: 20px;
+    &:focus {
+      background: url(~img/music-play-bar.png) center / contain no-repeat;
+      border: none;
+      outline: none;
+    }
+    cursor: pointer;
+  }
+  li:nth-child(1) {
+    background: url(~img/music-filter.png) center / contain no-repeat;
+  }
+  li:nth-child(2) {
+    background: url(~img/card-blue.png) center / 35% no-repeat, url(~img/opbar-bg-white.png) center / contain no-repeat;
+    &:focus {
+      background: url(~img/card-white.png) center / 35% no-repeat, url(~img/opbar-bg-blue.png) center / contain no-repeat;
+    }
+  }
+  li:nth-child(3) {
+    background: url(~img/play-blue.png) center / 35% no-repeat, url(~img/opbar-bg-white.png) center / contain no-repeat;
+    &:focus {
+      background: url(~img/play-white.png) center / 35% no-repeat, url(~img/opbar-bg-blue.png) center / contain no-repeat;
+    }
+  }
+  li:nth-child(4) {
+    background: url(~img/image-blue.png) center / 35% no-repeat, url(~img/opbar-bg-white.png) center / contain no-repeat;
+    &:focus {
+      background: url(~img/image-white.png) center / 35% no-repeat, url(~img/opbar-bg-blue.png) center / contain no-repeat;
+    }
+  }
+}

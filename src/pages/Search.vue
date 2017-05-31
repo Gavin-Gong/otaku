@@ -11,7 +11,7 @@
       <section class="playround">
         <section class="op-bar">
           <div class="status">
-            <el-select v-model="slecVal" placeholder="请选择">
+            <el-select v-model="slecVal" placeholder="请选择" @change="handleSort">
               <el-option
                 v-for="item in slecOptions"
                 :key="item"
@@ -20,7 +20,6 @@
               </el-option>
             </el-select>
             <i class="iconfont icon-music"></i>
-            <i class="iconfont icon-qiehuan"></i>
           </div>
           <ul class="cat-list">
             <li></li>
@@ -186,35 +185,35 @@ export default {
           // z-index: -1;
         }
       }
-      ul {
-        @include reset-list;
-        float: right;
-        margin-right: 60px;
-        li {
-          background: url(~img/music-play-bar.png) center / contain no-repeat;
-          width: 60px;
-          height: 60px;
-          margin-left: 20px;
-          cursor: pointer;
-          &:focus {
-            border: none;
-            outline: none;
-            background: $blue;
-          }
-        }
-        li:nth-child(1) {
-          background: url(~img/music-filter.png) center / contain no-repeat;
-        }
-        li:nth-child(2) {
-          background: url(~img/music-matrix.png) center / contain no-repeat;
-        }
-        li:nth-child(3) {
-          background: url(~img/music-play-bar.png) center / contain no-repeat;
-        }
-        li:nth-child(4) {
-          background: url(~img/music-ctx-bar.png) center / contain no-repeat;
-        }
-      }
+      // ul {
+      //   @include reset-list;
+      //   float: right;
+      //   margin-right: 60px;
+      //   li {
+      //     background: url(~img/music-play-bar.png) center / contain no-repeat;
+      //     width: 60px;
+      //     height: 60px;
+      //     margin-left: 20px;
+      //     cursor: pointer;
+      //     &:focus {
+      //       border: none;
+      //       outline: none;
+      //       background: $blue;
+      //     }
+      //   }
+      //   li:nth-child(1) {
+      //     background: url(~img/music-filter.png) center / contain no-repeat;
+      //   }
+      //   li:nth-child(2) {
+      //     background: url(~img/music-matrix.png) center / contain no-repeat;
+      //   }
+      //   li:nth-child(3) {
+      //     background: url(~img/music-play-bar.png) center / contain no-repeat;
+      //   }
+      //   li:nth-child(4) {
+      //     background: url(~img/music-ctx-bar.png) center / contain no-repeat;
+      //   }
+      // }
     }
     .matrix-layout {
       padding-top: 30px;

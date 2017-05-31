@@ -3,10 +3,17 @@
 > otaku
 
 ## TODO
-- 删除关注 popover
 - 下拉选择
-- 侧边导航组件，moveTo
-- navTo
-- 分页
+- opBar
 - 数据可定制化
-- 删除功能
+- bbaner icon
+- popover show
+
+op-bar 修改
+
+- 删除关注 popover
+- 分页
+- 侧边导航组件，moveTo
+
+BUG
+旋转

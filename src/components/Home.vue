@@ -2,8 +2,8 @@
   <div id="home">
     <x-header>
       <!--<img src="assets/img/header.png" alt="">-->
-      <div class="btns-wrapper">
-        <button class="ot-btn">登陆</button><br>
+      <div class="btns-wrapper" v-if="!$store.state.isAuth">
+        <button class="ot-btn" @click="$router.push({name: 'Login'})">登陆</button><br>
         <button class="ot-btn signup-btn">注册</button>
       </div>
       <section class="gallery">
@@ -37,7 +37,7 @@
 
         </div>
         <div class="inner-wrapper">
-          <section class="cat">
+          <section data-cat="music" class="cat">
             <h2>音&nbsp;&nbsp;&nbsp;&nbsp;乐 &nbsp;&nbsp;/&nbsp;&nbsp; GET &nbsp;&nbsp;MORE</h2>
             <div class="divider"></div>
             <div class="banner">
@@ -115,7 +115,7 @@
               </div>
             </div>
           </section>
-          <section class="cat">
+          <section data-cat="comment" class="cat">
             <h2>漫&nbsp;&nbsp;&nbsp;&nbsp;评 &nbsp;&nbsp;/&nbsp;&nbsp; GET &nbsp;&nbsp;MORE</h2>
             <div class="divider"></div>
             <div class="banner">
@@ -193,7 +193,7 @@
               </div>
             </div>
           </section>
-          <section class="cat">
+          <section data-cat="exhibition" class="cat">
             <h2>漫&nbsp;&nbsp;&nbsp;&nbsp;展 &nbsp;&nbsp;/&nbsp;&nbsp; GET &nbsp;&nbsp;MORE</h2>
             <div class="divider"></div>
             <div class="banner">
@@ -271,7 +271,7 @@
               </div>
             </div>
           </section>
-          <section class="cat">
+          <section data-cat="tongren" class="cat">
             <h2>同&nbsp;&nbsp;&nbsp;&nbsp;人 &nbsp;&nbsp;/&nbsp;&nbsp; GET &nbsp;&nbsp;MORE</h2>
             <div class="divider"></div>
             <div class="banner">
@@ -352,6 +352,7 @@
         </div>
       </section>
     </main>
+    <x-nav></x-nav>
   </div>
 </template>
 
@@ -359,13 +360,15 @@
 import XHeader from '@/components/Header'
 import Card from '@/components/Card'
 import CardList from '@/components/CardList'
+import XNav from '@/components/Nav'
 
 export default {
   name: 'hello',
   components: {
     XHeader,
     Card,
-    CardList
+    CardList,
+    XNav
   },
   data () {
     return {

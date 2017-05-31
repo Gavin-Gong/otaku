@@ -13,13 +13,13 @@
           <i class="iconfont icon-zhanghao"></i>
         </div>
         <div class="form-item">
-          <input type="text" placeholder="请输入密码">
+          <input type="password" placeholder="请输入密码">
           <i class="iconfont icon-mima"></i>
         </div>
 
         <div class="bottom-bar">
           <a href="">忘记密码</a>
-          <button>登 录</button>
+          <button @click="handleLogin">登 录</button>
         </div>
       </div>
     </div>
@@ -35,10 +35,11 @@ export default {
       sortKey: ''
     }
   },
-  created () {
-  },
   methods: {
-
+    handleLogin () {
+      this.$store.commit('login')
+      this.$router.push({name: 'Home'})
+    }
   },
   computed: {
 
@@ -133,6 +134,7 @@ export default {
         background: $deepBlue;
         padding: 10px 20px;
         border-radius: 6px;
+        cursor: pointer;
       }
     }
   }

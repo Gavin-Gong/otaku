@@ -46,7 +46,7 @@
               <h3>回复</h3>
               <ul class="reply-list">
                 <li v-for="(item, index) in replyList2">
-                  <img :src="avatar(60, 60)" alt="" class="avatar">
+                  <img :src="item.avatar" alt="" class="avatar">
                   <div class="content-wrapper">
                     <h4>{{item.name}}</h4>
                     <p>{{item.body}}</p>
@@ -77,15 +77,15 @@
             <x-icon type="star"></x-icon> &nbsp;&nbsp;我的收藏
           </div>
           <div class="star-content">
-            <ul class="star-nav">
+            <ul class="cat-list star-nav">
               <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
+              <li @click="handleTabChange('card')" tabindex="1"></li>
+             <li @click="handleTabChange('video')" tabindex="2"></li>
+              <li @click="handleTabChange('image')" tabindex="3"></li>
             </ul>
             <div class="star-card">
               <card-list class="starCard-list">
-                <x-card v-for="n in 6"></x-card>
+                <x-card v-for="data in filterData" :data="data"></x-card>
               </card-list>
               <div class="pagination-wrapper">
                 <el-pagination
@@ -104,7 +104,7 @@
            <div class="follow-content">
              <ul class="following-list">
                <li v-for="(fuck, index) in followList">
-                 <img :src="avatar(40,40)" class="avatar">
+                 <img :src="fuck.avatar" class="avatar">
                  <div class="info-wrapper">
                   <h4>{{ fuck.name }}</h4>
                   <p>{{ fuck.bio }}</p>
@@ -113,6 +113,7 @@
                   ref="morebtn"
                   placement="bottom"
                   width="60"
+                  v-model="showPop"
                   trigger="click">
                   <i class="iconfont icon-caidan more-btn" slot="reference"></i>
                   <ul class="pop-menu">
@@ -134,6 +135,7 @@ import XHeader from '@/components/Header'
 import XCard from '@/components/Card'
 import CardList from '@/components/CardList'
 import XIcon from '@/components/Icon'
+import mixin from '../mixin'
 
 export default {
   components: {
@@ -142,6 +144,7 @@ export default {
     CardList,
     XIcon
   },
+  mixins: [mixin],
   data () {
     return {
       slecOptions: [ '最新', '最热' ],
@@ -153,22 +156,22 @@ export default {
         { body: 'fsdfsd', is_me: true }
       ],
       replyList2: [
-        { body: 'dddd', created_at: '2017-02-19', avatar: '', name: 'GG' },
-        { body: 'dddd', created_at: '2017-02-19', avatar: '', name: 'GG' },
-        { body: 'dddd', created_at: '2017-02-19', avatar: '', name: 'GG' },
-        { body: 'dddd', created_at: '2017-02-19', avatar: '', name: 'GG' },
-        { body: 'dddd', created_at: '2017-02-19', avatar: '', name: 'GG' },
-        { body: 'dddd', created_at: '2017-02-19', avatar: '', name: 'GG' }
+        { body: 'dddd', created_at: '2017-02-19', name: 'GG', avatar: this.avatar(60, 60) },
+        { body: 'dddd', created_at: '2017-02-19', name: 'GG', avatar: this.avatar(60, 60) },
+        { body: 'dddd', created_at: '2017-02-19', name: 'GG', avatar: this.avatar(60, 60) },
+        { body: 'dddd', created_at: '2017-02-19', name: 'GG', avatar: this.avatar(60, 60) },
+        { body: 'dddd', created_at: '2017-02-19', name: 'GG', avatar: this.avatar(60, 60) },
+        { body: 'dddd', created_at: '2017-02-19', name: 'GG', avatar: this.avatar(60, 60) }
       ],
       followList: [
-        { name: 'gg', bio: 'dsdgsugfusd' },
-        { name: 'gg', bio: 'dsdgsugfusd' },
-        { name: 'gg', bio: 'dsdgsugfusd' },
-        { name: 'gg', bio: 'dsdgsugfusd' },
-        { name: 'gg', bio: 'dsdgsugfusd' },
-        { name: 'gg', bio: 'dsdgsugfusd' },
-        { name: 'gg', bio: 'dsdgsugfusd' },
-        { name: 'gg', bio: 'dsdgsugfusd' }
+        { name: 'gg', bio: 'dsdgsugfusd', avatar: this.avatar(60, 60) },
+        { name: 'gg', bio: 'dsdgsugfusd', avatar: this.avatar(60, 60) },
+        { name: 'gg', bio: 'dsdgsugfusd', avatar: this.avatar(60, 60) },
+        { name: 'gg', bio: 'dsdgsugfusd', avatar: this.avatar(60, 60) },
+        { name: 'gg', bio: 'dsdgsugfusd', avatar: this.avatar(60, 60) },
+        { name: 'gg', bio: 'dsdgsugfusd', avatar: this.avatar(60, 60) },
+        { name: 'gg', bio: 'dsdgsugfusd', avatar: this.avatar(60, 60) },
+        { name: 'gg', bio: 'dsdgsugfusd', avatar: this.avatar(60, 60) }
       ],
       tagList: [
         { color: '#f44336', title: '天然黑' },
@@ -182,8 +185,20 @@ export default {
         { color: '#f44336', title: '天然黑' },
         { color: '#f44336', title: '天然黑' }
       ],
+      cardListData: [
+        { type: 'card', title: 'xx', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: require('img/card.png') },
+        { type: 'card', title: 'x333', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: require('img/card.png') },
+        { type: 'video', title: 'x4444', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: require('img/card.png') },
+        { type: 'image', title: 'x555', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: require('img/card.png') },
+        { type: 'video', title: '7777x', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: require('img/card.png') },
+        { type: 'image', title: 'x88', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: require('img/card.png') },
+        { type: 'card', title: '999x', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: require('img/card.png') },
+        { type: 'image', title: '000x', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: require('img/card.png') },
+        { type: 'card', title: 'x', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: require('img/card.png') }
+      ],
       replyField: '',
       fakeReplyField: ''
+      // showPop: true
     }
   },
   methods: {
@@ -211,6 +226,7 @@ export default {
     },
     handleUnfollow (index) {
       this.followList.splice(index, 1)
+      this.showPop = false
     }
   }
 }
@@ -496,6 +512,8 @@ export default {
                   padding-right: 10px;
                   margin-bottom: 10px;
                   width: 100%;
+                  color: #333;
+                  font-size: 16px;
                   .deleteMsg, .replyMsg {
                     float: right;
                     margin-left: 10px;
@@ -503,7 +521,9 @@ export default {
 
                   }
                   .replyMsg {
-                    color: $blue;
+                    &:hover {
+                      color: $blue;
+                    }
                   }
                   .deleteMsg {
                     &:hover {
@@ -534,18 +554,7 @@ export default {
               width: 60px;
               height: 60px;
               margin-bottom: 20px;
-              &:nth-child(1) {
-                background: url(~img/music-filter.png) center / contain no-repeat;
-              }
-              &:nth-child(2) {
-                background: url(~img/music-ctx-bar.png) center / contain no-repeat;
-              }
-              &:nth-child(3) {
-                background: url(~img/music-matrix.png) center / contain no-repeat;
-              }
-              &:nth-child(4) {
-                background: url(~img/music-play-bar.png) center / contain no-repeat;
-              }
+              display: block;
             }
           }
           .star-card {
