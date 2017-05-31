@@ -2,15 +2,15 @@
   <li :style="bg">
     <div class="inner-card">
       <div class="slide">
-        <p>{{data.desc}}</p>
-        <p>{{data.created_at}}</p>
+        <p>{{ data.desc }}</p>
+        <p>{{ data.created_at }}</p>
       </div>
       <div class="footer-bar">
-        <h4>{{data.title}}</h4>
+        <h4>{{ data.title }}</h4>
         <ul>
           <li><i class="icon-play"></i> {{ data.play_count }}</li>
           <li><i class="icon-star"></i> {{ data.star_count }}</li>
-          <li>作者Eric</li>
+          <li>{{ data.author }}</li>
         </ul>
       </div>
     </div>
@@ -63,7 +63,6 @@ export default {
       background: url(~img/card.png) top / contain no-repeat;
       cursor: pointer;
       border-radius: 6px;
-
       .inner-card {
         border-bottom-left-radius: 6px;
         border-bottom-right-radius: 6px;

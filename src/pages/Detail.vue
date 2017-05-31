@@ -9,6 +9,7 @@
             <li>1.2k</li>
             <li>2017-03-21</li>
           </ul>
+          <p>主页 -- 漫评</p>
         </div>
         <div class="author-detail">
           <img src="~img/avatar.jpg" alt="" class="avatar">
@@ -28,13 +29,14 @@
             <div class="icon-wrapper">
               <x-icon type="share"></x-icon>
               <x-icon type="star1" @click.native="handleStar($event)"></x-icon>
+              <x-icon type="lahei" @click.native="handleStar($event)"></x-icon>
             </div>
             <input type="text" v-model="topCommentField">
             <button @click="handleTopReply">评论</button>
           </div>
           <ul class="comment-list">
             <li class="comment-item" v-for="(comment, index) in commentList">
-              <img src="~img/avatar.jpg" alt="" class="avatar">
+              <img :src="avatar(60, 60)" alt="" class="avatar">
               <div class="comment-content">
                 <h3>{{comment.name}}</h3>
                 <p class="time">{{comment.created_at}}</p>
@@ -42,12 +44,12 @@
                   <p>{{comment.body}}</p>
                   <div class="reply-bar">
                     <button @click="handleReply(index)">回复</button>
-                    <input type="text" v-model="childCommentField">
+                    <input type="text" v-model="comment.model">
                   </div>
                 </div>
                 <ul class="child-comment" v-if="comment.children && comment.children.length">
                   <li v-for="item in comment.children">
-                    <img src="~img/avatar.jpg" alt="" class="avatar">
+                    <img :src="avatar(60, 60)" alt="" class="avatar">
                     <div class="childComment-content">
                       <h4>{{item.name}}</h4>
                       <p>{{item.body}}</p>
@@ -68,6 +70,7 @@ import XHeader from '@/components/Header'
 import XCard from '@/components/Card'
 import CardList from '@/components/CardList'
 import XIcon from '@/components/Icon'
+import faker from 'faker'
 
 export default {
   components: {
@@ -80,14 +83,17 @@ export default {
     return {
       /*eslint-disable*/
       commentList: [
-        { name: '阿尔', created_at: '2017-01-11', body: 'gydsgf ugd ygyfgd yugfu ygduy guyf guy', children: [
+        { name: '阿尔', created_at: '2017-01-11', body: 'gydsgf ugd ygyfgd yugfu ygduy guyf guy', model: '', children: [
           { name: 'fd', body: 'fdfdfdfdfdfdd' },
           { name: 'fd', body: 'fdfdfdfdfdfdd' }
         ]},
-        { name: 'fdsfd', created_at: '2017-01-22', body: 'dsuih gfg iud u gu ', children: [] }
+        { name: 'fdsfd', created_at: '2017-01-22', body: 'dsuih gfg iud u gu ', model: '', children: [] }
       ],
       topCommentField: '',
       childCommentField: '',
+      avatar_1: faker.image.avatar(60, 60),
+      avatar_2: faker.image.avatar(60, 60),
+      avatar: faker.image.avatar
     }
   },
   methods: {
@@ -105,9 +111,9 @@ export default {
     handleReply(index) {
       this.commentList[index].children.push({
         name: '我',
-        body: this.childCommentField
+        body: this.commentList[index].model
       })
-      this.childCommentField = ''
+      this.commentList[index].model = ''
     },
   }
 }
@@ -119,13 +125,17 @@ export default {
 
 
 #detail {
+  &+.footer {
+    padding-top: 100px;
+  }
   .header {
     min-height: 0;
     background: url(~img/search-header.png) center top/contain no-repeat;
     .info-wrapper {
       overflow: hidden;
-      max-width: 800px;
-      margin: 210px auto;
+      padding-left: 150px;
+      padding-right: 150px;
+      margin: 200px auto;
       color: $white;
       .video-detail, .author-detail {
         width: calc((100% - 60px) / 2);
@@ -136,14 +146,16 @@ export default {
           padding-bottom: 10px;
           border-bottom: 2px solid #999;
           font-weight: normal;
-          font-size: 18px;
+          font-size: 20px;
         }
         .info-bar {
           @include reset-list;
+          margin-bottom: 20px;
           margin-top: 10px;
           li {
             // background:
             // TODO: Icon
+            font-size: 16px;
             margin-left: 10px;
             padding-left: 26px;
             &:nth-child(1) {
@@ -153,6 +165,10 @@ export default {
             &:nth-child(2) {
               background: url(~img/star-white.png) left center / contain no-repeat;
             }
+          }
+          p {
+            display: block;
+            margin-bottom: 40px;
           }
         }
       }
@@ -168,11 +184,11 @@ export default {
           width: calc(100% - 80px);
           h4 {
             font-weight: normal;
-            font-size: 18px;
+            font-size: 20px;
             margin-bottom: 10px;
           }
           p {
-            font-size: 14px;
+            font-size: 16px;
           }
         }
       }
@@ -183,48 +199,59 @@ export default {
     .inner-wrapper {
       margin: 0 auto;
       background: $deepBlue;
-      width: 1000px;
+      width: 1200px;
       margin-top: -180px;
       padding-bottom: 20px;
       .comment-wrapper {
-        width: 70%;
+        width: 58%;
         margin: 30px auto;
         color: $white;
         // common
         .reply-bar {
+          padding-top: 10px;
+          padding-bottom: 10px;
           border-bottom-left-radius: 6px;
           border-bottom-right-radius: 6px;
         }
         >.reply-bar {
           border-radius: 6px;
-          padding-left: 50px;
-          padding-right: 50px;
+          padding-left: 30px;
+          padding-right: 30px;
+          height: 56px;
           i {
-            font-size: 19px;
+            font-size: 20px;
             margin-left: 20px;
             vertical-align: middle;
             cursor: pointer;
-            &:fisrt-child {
+            position: relative;
+            top: -3px;
+            &:first-child {
               margin-left: 0
             }
           }
           button {
             // float: right;
             // width: 100px;
-            font-size: 16px;
+            font-size: 18px;
+            position: relative;
+            top: 2px;
           }
           .icon-wrapper {
             display: inline-block;
             position: relative;
-            top: -5px;
+            top: -7px;
             // float: left;
-            width: 80px;
+            width: 100px;
           }
           input {
             // width: 200px;
             width: calc(100% - 240px);
-            margin-left: 50px;
-            margin-right: 50px;
+            position: relative;
+            top: -1px;
+            height: 40px;
+            min-width: 440px;
+            margin-left: 20px;
+            margin-right: 10px;
           }
         }
         .avatar {
@@ -241,8 +268,13 @@ export default {
               display: inline-block;
               width: calc(100% - 79px);
               margin-left: 10px;
+              h3 {
+                font-size: 20px;
+              }
               .time {
                 margin-top: 12px;
+                font-size: 16px;
+                color: #ccc;
               }
               .comment-card {
                 @include radius-card;
@@ -263,9 +295,11 @@ export default {
                   }
                   button {
                     // vertical-align: middle;
+                    // float: right;
                     position: relative;
-                    top: 3px;
+                    top: 4px;
                     margin-right: 20px;
+                    font-size: 18px;
                   }
                 }
               }
@@ -283,6 +317,9 @@ export default {
                 .childComment-content {
                   display: inline-block;
                   margin-left: 10px;
+                  h4 {
+                    color: $blue;
+                  }
                 }
               }
             }

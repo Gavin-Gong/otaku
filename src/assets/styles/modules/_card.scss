@@ -41,6 +41,9 @@
           margin-bottom: 14px;
         }
         .footer-bar {
+          h4 {
+            font-weight: normal;
+          }
           ul {
             @include reset-list;
             li {
@@ -65,7 +68,8 @@
       //   margin-left: 0;
       // }
       &:hover  {
-        @include shadow;
+        // @include shadow;
+        box-shadow: 0 5px 10px rgba(0,0,0,.3);
         .slide {
           visibility: visible;
           height: 80px;

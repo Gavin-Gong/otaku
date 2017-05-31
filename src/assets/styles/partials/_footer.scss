@@ -3,6 +3,7 @@
 .footer {
   overflow: hidden;
   position: relative;
+  // padding-top: 200px;
   padding-top: 100px;
   .contact {
     text-align: center;
@@ -40,8 +41,9 @@
       max-width: 200px;
       color: #000;
       font-size: 16px;
-      &:first-child {
-        color: $white;
+      color: $white;
+      &:last-child {
+        padding-top: 24px;
       }
     }
   }

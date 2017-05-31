@@ -11,7 +11,7 @@
         </li>
         <li>
           <ul>
-            <li v-for="n in 6" class="tag"><x-icon type="tag"></x-icon> 天然黑</li>
+            <li v-for="item in tagList" class="tag" :style="{color: item.color}"><x-icon type="tag"></x-icon> {{item.title}}</li>
           </ul>
         </li>
       </ul>
@@ -26,7 +26,7 @@
             <div class="message">
               <h3>私信</h3>
               <div class="reply-user">
-                <img src="~img/avatar.jpg" alt="" class="avatar">
+                <img :src="avatar(60,60)" alt="" class="avatar">
                 <span>
                   <h4>name</h4>
                   <p>低头吧</p>
@@ -46,7 +46,7 @@
               <h3>回复</h3>
               <ul class="reply-list">
                 <li v-for="(item, index) in replyList2">
-                  <img src="~img/avatar.jpg" alt="" class="avatar">
+                  <img :src="avatar(60, 60)" alt="" class="avatar">
                   <div class="content-wrapper">
                     <h4>{{item.name}}</h4>
                     <p>{{item.body}}</p>
@@ -89,6 +89,7 @@
               </card-list>
               <div class="pagination-wrapper">
                 <el-pagination
+                class="pagination"
                   layout="prev, pager, next"
                   :total="50">
                 </el-pagination>
@@ -102,12 +103,23 @@
           </div>
            <div class="follow-content">
              <ul class="following-list">
-               <li v-for="n in 9">
-                 <img src="~img/avatar.jpg" class="avatar">
+               <li v-for="(fuck, index) in followList">
+                 <img :src="avatar(40,40)" class="avatar">
                  <div class="info-wrapper">
-                  <h4>my name</h4>
-                  <p>less is morw</p>
+                  <h4>{{ fuck.name }}</h4>
+                  <p>{{ fuck.bio }}</p>
                  </div>
+                 <el-popover
+                  ref="morebtn"
+                  placement="bottom"
+                  width="60"
+                  trigger="click">
+                  <i class="iconfont icon-caidan more-btn" slot="reference"></i>
+                  <ul class="pop-menu">
+                    <li><i class="iconfont icon-sixin"></i> <span>私信</span></li>
+                    <li @click="handleUnfollow(index)"><i class="iconfont icon-guanbi"></i> <span>移除</span></li>
+                  </ul>
+                </el-popover>
                </li>
              </ul>
            </div>
@@ -148,6 +160,28 @@ export default {
         { body: 'dddd', created_at: '2017-02-19', avatar: '', name: 'GG' },
         { body: 'dddd', created_at: '2017-02-19', avatar: '', name: 'GG' }
       ],
+      followList: [
+        { name: 'gg', bio: 'dsdgsugfusd' },
+        { name: 'gg', bio: 'dsdgsugfusd' },
+        { name: 'gg', bio: 'dsdgsugfusd' },
+        { name: 'gg', bio: 'dsdgsugfusd' },
+        { name: 'gg', bio: 'dsdgsugfusd' },
+        { name: 'gg', bio: 'dsdgsugfusd' },
+        { name: 'gg', bio: 'dsdgsugfusd' },
+        { name: 'gg', bio: 'dsdgsugfusd' }
+      ],
+      tagList: [
+        { color: '#f44336', title: '天然黑' },
+        { color: '#f44336', title: '天然黑' },
+        { color: '#f44336', title: '天然黑' },
+        { color: '#f44336', title: '天然黑' },
+        { color: '#f44336', title: '天然黑' },
+        { color: '#f44336', title: '天然黑' },
+        { color: '#f44336', title: '天然黑' },
+        { color: '#f44336', title: '天然黑' },
+        { color: '#f44336', title: '天然黑' },
+        { color: '#f44336', title: '天然黑' }
+      ],
       replyField: '',
       fakeReplyField: ''
     }
@@ -171,9 +205,12 @@ export default {
       }
     },
     fakeReplyMsg (index) {
-      this.$message.success('回复成功!')
+      this.$message.success('回复成功')
       document.getElementById(`reply-bar-${index}`).style.display = 'none'
       this.fakeReplyField = ''
+    },
+    handleUnfollow (index) {
+      this.followList.splice(index, 1)
     }
   }
 }
@@ -191,6 +228,26 @@ export default {
 @mixin title-bar {
 
 }
+.pop-menu {
+  @include reset-list;
+  list-style: none;
+  li {
+    display: block;
+    padding: 10px 10px;
+    cursor: pointer;
+    font-size: 16px;
+    i {
+      font-size: 20px;
+      vertical-align: top;
+      width: auto;
+      height: auto;
+      line-height: 1;
+    }
+    span {
+      vertical-align: top;
+    }
+  }
+}
 .avatar {
   @include avatar();
 }
@@ -206,6 +263,9 @@ export default {
     &:focus {
       outline: none;
     }
+  }
+  [id^=reply-bar-] {
+    display: none;
   }
   button {
     outline: none;
@@ -234,10 +294,14 @@ export default {
     }
   }
 }
+#profile + .footer {
+  padding-top: 100px;
+}
 #profile {
   .header {
     min-height: 600px;
     overflow: hidden;
+    z-index: 1;
     background: url(~img/music-header.png) center top/contain no-repeat, url(~img/recommend.png) center bottom/cover no-repeat;
     .profile-card-list {
       @include reset-list;
@@ -245,12 +309,15 @@ export default {
       top: 300px;
       left: 50%;
       transform: translateX(-50%);
-      min-width: 820px;
+      min-width: 1300px;
+      padding: 0 50px;
       overflow: hidden;
       >li {
         @include radius-card();
-        width: 400px;
-        margin-left: 20px;
+        height: 140px;
+        width: 580px;
+        // height: 140px;
+        margin-left: 40px;
         float: left;
         .avatar {
           @include avatar;
@@ -258,21 +325,34 @@ export default {
       }
       >li:first-child {
         margin-left: 0;
-        padding: 20px;
+        padding: 30px 20px;
+        .avatar {
+          width: 80px;
+          height: 80px;
+        }
         .info-wrapper {
+          vertical-align: top;
           display: inline-block;
           margin-left: 20px;
           h3 {
             margin-top: 0;
+            margin-bottom: 30px;
           }
         }
       }
       >li:last-child {
+        padding: 30px 20px;
         ul {
           @include reset-list;
           li.tag {
             padding: 10px;
             border-radius: 5px;
+            &:nth-child(1) {
+              color: #f44336;
+            }
+            i {
+              font-weight: bold;
+            }
           }
         }
       }
@@ -280,21 +360,23 @@ export default {
   }
   main {
     .inner-wrapper {
-      width: 1200px;
+      width: 1300px;
+      position: relative;
+      top: -100px;
       margin: 0 auto;
-      padding: 40px;
+      padding: 60px 70px;
       color: $white;
       background: $deepBlue;
-
+      z-index: 22;
       // common style
       .title-bar {
         border-bottom: 3px solid $green;
-        width: 120px;
+        width: 160px;
         padding-bottom: 10px;
-        margin-bottom: 20px;
-        font-size: 20px;
+        margin-bottom: 60px;
+        font-size: 28px;
         i {
-          font-size: 22px;
+          font-size: 28px;
           vertical-align: baseline;
         }
       }
@@ -308,6 +390,8 @@ export default {
           h3 {
             color: $white;
             margin-bottom: 10px;
+            font-size: 28px;
+            font-weight: normal;
           }
         }
         .message {
@@ -322,6 +406,8 @@ export default {
               vertical-align: top;
               h4 {
                 margin: 0;
+                font-size: 28px;
+                font-weight: normal;
               }
               p {
                 margin: 10px 0 0;
@@ -349,6 +435,16 @@ export default {
               text-align: right;
               padding-right: 10px;
             }
+            .reply-bar {
+              border-bottom-left-radius: 6px;
+              border-bottom-right-radius: 6px;
+              width: 100%;
+              padding-left: 50px;
+              // padding-right: 50px;
+              * {
+                text-align: center;
+              }
+            }
 
           }
         }
@@ -363,21 +459,37 @@ export default {
             margin-top: 0;
             list-style: none;
             margin-left: 0;
-            padding: 20px 0;
+            padding: 20px 0px;
             // min-width: 600px;
             >li {
-              margin-bottom: 10px;
+              margin-bottom: 40px;
+              // margin-left: 40px;
+              // margin-right: 40px;
               cursor: pointer;
               .avatar {
                 vertical-align: top;
                 float: left;
-                margin-left: 10px;
+                margin-left: 40px;
+              }
+              .reply-bar {
+                padding-left: 190px;
+                input {
+                  width: 400px;
+                }
               }
               .content-wrapper {
                 // display: inline-block;
-                margin-left: 80px;
+                margin-left: 120px;
+                margin-right: 40px;
                 h4 {
-                  margin-bottom: 4px;
+                  // margin-bottom: 4px;
+                  font-weight: normal;
+                  color: $blue;
+                }
+                >p {
+                  display: block;
+                  margin: 10px 0;
+                  font-size: 18px;
                 }
                 .bottom-bar {
                   @include reset-list;
@@ -387,8 +499,16 @@ export default {
                   .deleteMsg, .replyMsg {
                     float: right;
                     margin-left: 10px;
+                    user-select: none;
+
+                  }
+                  .replyMsg {
+                    color: $blue;
                   }
                   .deleteMsg {
+                    &:hover {
+                      color: #f44336;
+                    }
                   }
                 }
               }
@@ -430,23 +550,29 @@ export default {
           }
           .star-card {
             @include radius-card;
+            padding-bottom: 40px;
             margin-left: 160px;
             .starCard-list {
               list-style: none;
               overflow: hidden;
-              padding: 20px 30px;
+              padding: 30px 40px;
               // padding: 0px;
 
               background: transparent;
               >ul {
                 overflow: hidden;
-                margin-left: -30px;
+                margin-left: -50px;
               }
               >ul>li {
-                width: calc((100% - 60px) / 2);
-                margin-left: 30px;
+                width: calc((100% - 105px) / 2);
+                margin-left: 50px;
                 margin-bottom: 30px;
+                height: 168px;
+                background-size: cover!important;
               }
+            }
+            .pagination-wrapper {
+              margin-top: -20px;
             }
           }
 
@@ -455,17 +581,37 @@ export default {
       .follow {
         .follow-content {
           @include radius-card;
+          padding: 10px;
           .following-list {
             @include reset-list;
+            padding-top: 20px;
+            .avatar {
+              width: 40px;
+              height: 40px;
+            }
             >li {
+              position: relative;
               width: calc((100% - 60px) / 3);
               margin-left: 20px;
-              margin-bottom: 20px;
+              margin-bottom: 30px;
               padding: 10px;
+              height: 70px;
               border: 1px solid #ccc;
               border-radius: 6px;
               color: #000;
               cursor: pointer;
+              .more-btn {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                right: 20px;
+                font-size: 30px;
+                // font-weight: bold;
+                color: #333;
+                width: auto;
+                height: auto;
+                cursor: pointer;
+              }
               .info-wrapper {
                 vertical-align: top;
                 margin-left: 20px;

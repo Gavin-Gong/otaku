@@ -377,6 +377,9 @@ export default {
 
 <style lang="scss">
 @import '~styles/partials/_main.scss';
+#home + .footer {
+   padding-top: 400px;
+}
 #home {
   .card-collection {
     >ul>li {

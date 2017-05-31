@@ -14,7 +14,7 @@
         <nav class="nav" role="navigation">
           <ul>
             <li>
-              <router-link :to="{ name: 'Home' }">漫评</router-link>
+              <router-link :to="{ name: 'Home' }">首页</router-link>
             </li>
             <li>
               <router-link :to="{ name: 'Detail' }">漫评</router-link>
@@ -26,7 +26,7 @@
               <router-link :to="{ name: 'Music' }">MAD / AMV</router-link>
             </li>
             <li>
-              <router-link :to="{ name: 'Search' }"></router-link>
+              <router-link :to="{ name: 'Music' }">同人</router-link>
             </li>
           </ul>
         </nav>

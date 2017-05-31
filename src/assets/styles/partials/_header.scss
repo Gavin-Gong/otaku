@@ -6,7 +6,6 @@
     url(~img/recommend.png) center bottom / cover;
   min-height: 1160px;
   padding: 40px;
-  // background: $darkBlue;
   >img {
     position: absolute;
     max-width: 100%;
@@ -49,11 +48,12 @@
   }
   >.avatar {
     z-index: 13;
-    // float: right;
     position: absolute;
     right: 20px;
     top: 20px;
     overflow: hidden;
+    height: 78px;
+    width: 78px;
     img {
       border-radius: 50%;
       width: 80px;
@@ -100,6 +100,7 @@
         }
         p {
           margin-bottom: 30px;
+          color: #ccc;
         }
       }
     }

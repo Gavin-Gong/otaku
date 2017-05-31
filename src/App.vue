@@ -20,7 +20,10 @@ export default {
 
 @import '~styles/index';
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    font-family: "Hiragino Sans GB", sans-serif;
+  * {
+    font-family: "Hiragino Sans GB", sans-serif;
+  }
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
