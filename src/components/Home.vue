@@ -48,9 +48,9 @@
                   <button class="ot-btn">泽野弘之</button>&nbsp;
                   <button class="ot-btn">新番op</button>
                 </div>
-              </div><div class="banner-right">
+              </div><div class="banner-right" @click="$router.push({name: 'Detail', query:{ id: 2 }})">
                 <div class="mask">
-                  <i>icon</i>
+                  <i class="iconfont icon-bofang"></i>
                 </div>
               </div>
             </div>
@@ -128,7 +128,7 @@
                 </div>
               </div><div class="banner-right">
                 <div class="mask">
-                  <i>icon</i>
+                  <i class="iconfont icon-bofang"></i>
                 </div>
               </div>
             </div>
@@ -206,7 +206,7 @@
                 </div>
               </div><div class="banner-right">
                 <div class="mask">
-                  <i>icon</i>
+                  <i class="iconfont icon-bofang"></i>
                 </div>
               </div>
             </div>
@@ -284,7 +284,7 @@
                 </div>
               </div><div class="banner-right">
                 <div class="mask">
-                  <i>icon</i>
+                  <i class="iconfont icon-bofang"></i>
                 </div>
               </div>
             </div>
@@ -388,6 +388,9 @@ export default {
     >ul>li {
       width: calc((100% - 180px) / 3);
     }
+  }
+  .icon-bofang {
+    font-size: 60px;
   }
 }
 </style>

@@ -51,6 +51,12 @@
         width: 100%;
         height: 100%;
         background: rgba(0,0,0,.2);
+        &:hover i{
+          color: #5dbfe1;
+        }
+        &:hover {
+          cursor: pointer;
+        }
       }
       i {
         display: inline-block;

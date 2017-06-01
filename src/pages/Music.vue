@@ -31,9 +31,9 @@
           </div>
           <ul class="cat-list">
             <li tabindex="-1"></li>
-            <li @click="handleTabChange('card')" tabindex="1"></li>
-            <li @click="handleTabChange('video')" tabindex="2"></li>
-            <li @click="handleTabChange('image')" tabindex="3"></li>
+            <li @click="handleTabChange('card', $event)" tabindex="0"></li>
+            <li @click="handleTabChange('video', $event)" tabindex="2"></li>
+            <li @click="handleTabChange('image', $event)" tabindex="3"></li>
           </ul>
         </section>
         <section class="matrix-layout">
@@ -45,7 +45,7 @@
           <el-pagination
             class="pagination"
             layout="prev, pager, next"
-            :total="50">
+            :total="10">
           </el-pagination>
         </section>
       </section>
@@ -57,7 +57,9 @@
 import XHeader from '@/components/Header'
 import Card from '@/components/Card'
 import CardList from '@/components/CardList'
+import _ from 'lodash'
 import mixin from '../mixin'
+import data from '../data'
 
 export default {
   components: {
@@ -68,19 +70,9 @@ export default {
   mixins: [mixin],
   data () {
     return {
-      slecOptions: [ '最新', '最热' ],
+      slecOptions: [ '最新', '最热', '排行' ],
       slecVal: '最新',
-      cardListData: [
-        { type: 'card', title: 'xx', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: require('img/card.png') },
-        { type: 'card', title: 'x333', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: require('img/card.png') },
-        { type: 'video', title: 'x4444', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: require('img/card.png') },
-        { type: 'image', title: 'x555', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: require('img/card.png') },
-        { type: 'video', title: '7777x', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: require('img/card.png') },
-        { type: 'image', title: 'x88', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: require('img/card.png') },
-        { type: 'card', title: '999x', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: require('img/card.png') },
-        { type: 'image', title: '000x', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: require('img/card.png') },
-        { type: 'card', title: 'x', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: require('img/card.png') }
-      ]
+      cardListData: _.shuffle(data.cardListData).slice(0, 9)
     }
   }
 }

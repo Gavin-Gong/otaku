@@ -29,6 +29,9 @@ module.exports = {
       'style-mixins': resolve('src/assets/styles/mixinsniop'),
     }
   },
+  // externals : {
+  //   vue: 'Vue'
+  // },
   module: {
     rules: [
       {

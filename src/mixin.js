@@ -8,8 +8,8 @@ export default {
     }
   },
   methods: {
-    handleTabChange (type) {
-      console.log('changed')
+    handleTabChange (type, e) {
+      console.log('changed', e)
       this.filterKey = type
     },
     handleSort () {
@@ -21,7 +21,7 @@ export default {
       const filterKey = this.filterKey
       /*eslint-disable*/
       const sortKey = this.sortKey // just make is reactive
-      return reverse(this.cardListData).filter(item => item.type === filterKey || this.filterKey === '')
+      return reverse(this.cardListData).filter(item => item.type === filterKey || this.filterKey === '' || this.filterKey === 'card')
     }
   }
 }

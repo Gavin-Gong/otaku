@@ -34,7 +34,7 @@ import MoveTo from 'moveto'
 export default {
   data () {
     return {
-      isShow: true
+      isShow: false
     }
   },
   methods: {
@@ -67,12 +67,14 @@ export default {
   position: fixed;
   z-index: 9999;
   right: 30px;
-  top: 50%;
+  top: 70%;
   transform: translateY(-50%);
   background: #fff;
-  background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+  background-image: linear-gradient(120deg, #3a6186 0%, #89253e 100%);
   border-radius: 6px;
   padding: 20px 40px 20px 40px;
+  width: 220px;
+  // height: 300px;
   .nav {
     @include reset-list;
     li {
@@ -80,6 +82,14 @@ export default {
       cursor: pointer;
       display: block;
       padding: 6px 0;
+      margin-bottom: 30px;
+      color: #fff;
+      &:last-child{
+        margin-bottom: 0;
+      }
+      &:hover {
+        color: #fa9d4c;
+      }
       i {
         position: relative;
         top: 1px;
@@ -97,8 +107,8 @@ export default {
 }
 .toggle-arrow {
   position: fixed;
-  right: 210px;
-  top: 50%;
+  right: 220px;
+  top: 70%;
   // transform: translateY(-50%);
   z-index: 10000;
   width: 50px;

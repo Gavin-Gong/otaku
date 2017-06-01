@@ -17,3 +17,8 @@ op-bar 修改
 
 BUG
 旋转
+
+- GetMorecolor
+- nav position
+- linegradient
+-

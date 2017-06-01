@@ -186,7 +186,7 @@ export default {
         { color: '#f44336', title: '天然黑' }
       ],
       cardListData: [
-        { type: 'card', title: 'xx', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: require('img/card.png') },
+        { type: 'card', title: 'xx', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: 'http://opazkqh2d.bkt.clouddn.com/17-6-1/16482897.jpg' },
         { type: 'card', title: 'x333', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: require('img/card.png') },
         { type: 'video', title: 'x4444', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: require('img/card.png') },
         { type: 'image', title: 'x555', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: require('img/card.png') },
