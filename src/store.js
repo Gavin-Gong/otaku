@@ -5,7 +5,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    isAuth: false
+    isAuth: false,
+    userAvatar: require('img/avatar.jpg')
   },
   mutations: {
     login (state) {

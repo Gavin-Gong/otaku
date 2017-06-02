@@ -5,7 +5,7 @@
         <li>
           <img src="~img/avatar.jpg" alt="" class="avatar">
           <div class="info-wrapper">
-            <h3>my name <x-icon type="man" color="#f44336"></x-icon></h3>
+            <h3>毕业后你不是我的 <x-icon type="man" color="#f44336"></x-icon></h3>
             <p>忍受不了变得毫无用处的人是我</p>
           </div>
         </li>
@@ -26,10 +26,10 @@
             <div class="message">
               <h3>私信</h3>
               <div class="reply-user">
-                <img :src="avatar(60,60)" alt="" class="avatar">
+                <img :src="leftAvatar" alt="" class="avatar">
                 <span>
-                  <h4>name</h4>
-                  <p>低头吧</p>
+                  <h4>樱满集</h4>
+                  <p>向大佬低头</p>
                 </span>
               </div>
               <div class="reply-box">
@@ -91,7 +91,7 @@
                 <el-pagination
                 class="pagination"
                   layout="prev, pager, next"
-                  :total="50">
+                  :total="10">
                 </el-pagination>
               </div>
             </div>
@@ -99,7 +99,7 @@
         </section>
         <section class="follow">
           <div class="title-bar">
-            <x-icon type="like"></x-icon> 我的关注
+            <x-icon type="following"></x-icon>   &nbsp;&nbsp;&nbsp;我的关注
           </div>
            <div class="follow-content">
              <ul class="following-list">
@@ -149,52 +149,50 @@ export default {
     return {
       slecOptions: [ '最新', '最热' ],
       slecVal: '最新',
+      leftAvatar: this.avatar(60, 60),
       replyList: [
-        { body: 'fhiushdfui', is_me: false },
-        { body: 'fsdfds', is_me: true },
-        { body: 'fdsf', is_me: false },
-        { body: 'fsdfsd', is_me: true }
+        { body: '向泽野势力低头', is_me: false },
+        { body: '别低头了要老虚快跑吧', is_me: true },
+        { body: '他跑不掉的QAQ', is_me: false },
+        { body: '反水了', is_me: true }
       ],
       replyList2: [
-        { body: 'dddd', created_at: '2017-02-19', name: 'GG', avatar: this.avatar(60, 60) },
-        { body: 'dddd', created_at: '2017-02-19', name: 'GG', avatar: this.avatar(60, 60) },
-        { body: 'dddd', created_at: '2017-02-19', name: 'GG', avatar: this.avatar(60, 60) },
-        { body: 'dddd', created_at: '2017-02-19', name: 'GG', avatar: this.avatar(60, 60) },
-        { body: 'dddd', created_at: '2017-02-19', name: 'GG', avatar: this.avatar(60, 60) },
-        { body: 'dddd', created_at: '2017-02-19', name: 'GG', avatar: this.avatar(60, 60) }
+        { body: '反正我感觉要出续作很不明智 看大河内怎么写了 写不好又要背锅', created_at: '2017-04-03', name: '迪罗木多', avatar: this.avatar(60, 60) },
+        { body: '前一季，有些平淡无味。后一季，导火索点燃，铺垫接连引爆', created_at: '2017-04-02', name: '克里斯蒂娜', avatar: this.avatar(60, 60) },
+        { body: '虽然确实有不对的地方，但是他只是一个高中生', created_at: '2017-04-02', name: '红A', avatar: this.avatar(60, 60) },
+        { body: 'EL PSY CONGROO！！！', created_at: '2017-04-02', name: '嘟嘟噜', avatar: this.avatar(60, 60) },
+        { body: '荣耀存于心，而非留于形', created_at: '2017-04-01', name: '你看到什么', avatar: this.avatar(60, 60) },
+        { body: '我就想要个妖刀', created_at: '2017-04-01', name: 'gavin', avatar: this.avatar(60, 60) }
       ],
       followList: [
-        { name: 'gg', bio: 'dsdgsugfusd', avatar: this.avatar(60, 60) },
-        { name: 'gg', bio: 'dsdgsugfusd', avatar: this.avatar(60, 60) },
-        { name: 'gg', bio: 'dsdgsugfusd', avatar: this.avatar(60, 60) },
-        { name: 'gg', bio: 'dsdgsugfusd', avatar: this.avatar(60, 60) },
-        { name: 'gg', bio: 'dsdgsugfusd', avatar: this.avatar(60, 60) },
-        { name: 'gg', bio: 'dsdgsugfusd', avatar: this.avatar(60, 60) },
-        { name: 'gg', bio: 'dsdgsugfusd', avatar: this.avatar(60, 60) },
-        { name: 'gg', bio: 'dsdgsugfusd', avatar: this.avatar(60, 60) }
+        { name: '瑞文', bio: '阅剑，知其主', avatar: this.avatar(60, 60) },
+        { name: '疾风剑豪', bio: '长路漫漫，唯剑做伴', avatar: this.avatar(60, 60) },
+        { name: '卢锡安', bio: '死亡在敲门，不，敲门的人是我', avatar: this.avatar(60, 60) },
+        { name: '卫宫士郎', bio: '正义的伙伴', avatar: this.avatar(60, 60) },
+        { name: '御坂美琴', bio: '常台盘中学lv4', avatar: this.avatar(60, 60) },
+        { name: '白井黑子', bio: 'ou nei sa ma ', avatar: this.avatar(60, 60) },
+        { name: '烬', bio: '这个舞台被我踩在脚下', avatar: this.avatar(60, 60) },
+        { name: '薇恩', bio: '陷入黑暗中的人们', avatar: this.avatar(60, 60) }
       ],
       tagList: [
         { color: '#f44336', title: '天然黑' },
-        { color: '#f44336', title: '天然黑' },
-        { color: '#f44336', title: '天然黑' },
-        { color: '#f44336', title: '天然黑' },
-        { color: '#f44336', title: '天然黑' },
-        { color: '#f44336', title: '天然黑' },
-        { color: '#f44336', title: '天然黑' },
-        { color: '#f44336', title: '天然黑' },
-        { color: '#f44336', title: '天然黑' },
-        { color: '#f44336', title: '天然黑' }
+        { color: '#543210', title: '中二' },
+        { color: '#f72532', title: '星月厨' },
+        { color: '#fe7395', title: '钉宫理惠' },
+        { color: '#0073f3', title: '休闲党' },
+        { color: '#22cc33', title: 'saber' },
+        { color: '#2233ff', title: '车夫党' }
       ],
       cardListData: [
-        { type: 'card', title: 'xx', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: 'http://opazkqh2d.bkt.clouddn.com/17-6-1/16482897.jpg' },
-        { type: 'card', title: 'x333', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: require('img/card.png') },
-        { type: 'video', title: 'x4444', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: require('img/card.png') },
-        { type: 'image', title: 'x555', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: require('img/card.png') },
-        { type: 'video', title: '7777x', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: require('img/card.png') },
-        { type: 'image', title: 'x88', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: require('img/card.png') },
-        { type: 'card', title: '999x', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: require('img/card.png') },
-        { type: 'image', title: '000x', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: require('img/card.png') },
-        { type: 'card', title: 'x', desc: 'xx', star_count: 'xx', play_count: 'xx', created_at: 'xx', banner: require('img/card.png') }
+        { type: 'card', author: 'orign', title: '95年UP主带你回顾童年', desc: '95年UP主带你回顾童年', star_count: '2.2K', play_count: '3.3K', created_at: '2017-03-06', banner: 'http://opazkqh2d.bkt.clouddn.com/17-6-1/16482897.jpg' },
+        { type: 'card', author: '3酱', title: '【3酱@四谎】樱雨星尘化作你', desc: '【3酱@四谎】樱雨星尘化作你', star_count: '2.6W', play_count: '6.2W', created_at: '2017-02-07', banner: 'http://opazkqh2d.bkt.clouddn.com/17-5-31/43447571.jpg' },
+        { type: 'video', author: '谁知道呢', title: '【钢琴】那些年QQ空间里的背景...', desc: '【钢琴】那些年QQ空间里的背景音乐', star_count: '1.9W', play_count: '3.6W', created_at: '2017-03-15', banner: 'http://opazkqh2d.bkt.clouddn.com/17-5-31/53134716.jpg' },
+        { type: 'image', author: 'leec', title: '诚实吐槽Fate/Zero', desc: '诚实吐槽Fate/Zero', star_count: '0.3K', play_count: '1.2K', created_at: '2017-04-06', banner: 'http://opazkqh2d.bkt.clouddn.com/17-5-31/53134716.jpg' },
+        { type: 'video', author: 'gavin', title: '【Re:CREATORS】向世界送上...', desc: '【Re:CREATORS】向世界送上军服', star_count: '1.6W', play_count: '4.2W', created_at: '2016-05-06', banner: 'http://opazkqh2d.bkt.clouddn.com/17-5-31/47659813.jpg' },
+        { type: 'image', author: '阿诺', title: '最好的过去', desc: '最好的过去', star_count: '12W', play_count: '23W', created_at: '2016-08-12', banner: 'http://opazkqh2d.bkt.clouddn.com/17-5-31/25497058.jpg' },
+        { type: 'card', author: 'renqianhan', title: '原来,你已经不在我身旁', desc: '【虐心】原来,你已经不在我身旁', star_count: '1.2K', play_count: '2.6K', created_at: '2016-11-06', banner: 'http://opazkqh2d.bkt.clouddn.com/17-5-31/86690592.jpg' },
+        { type: 'image', author: '你猜', title: '距离与错过【秒五】', desc: '距离与错过，秒速五厘米', star_count: '2.9K', play_count: '1.2W', created_at: '2017-02-16', banner: 'http://opazkqh2d.bkt.clouddn.com/17-6-1/51672819.jpg' },
+        { type: 'card', author: '红A', title: 'd区点击最高的10个视频', desc: '【排行向】d区点击最高的100个视频', star_count: '1.6W', play_count: '7.8W', created_at: '2017-04-06', banner: require('img/card.png') }
       ],
       replyField: '',
       fakeReplyField: ''
@@ -269,6 +267,7 @@ export default {
 }
 .reply-bar {
   padding: 6px;
+  // padding-left: 30px;
   background: $green;
   input {
     height: 30px;
@@ -351,7 +350,7 @@ export default {
           display: inline-block;
           margin-left: 20px;
           h3 {
-            margin-top: 0;
+            margin-top: 10px;
             margin-bottom: 30px;
           }
         }
@@ -387,7 +386,7 @@ export default {
       // common style
       .title-bar {
         border-bottom: 3px solid $green;
-        width: 160px;
+        width: 170px;
         padding-bottom: 10px;
         margin-bottom: 60px;
         font-size: 28px;
@@ -455,7 +454,7 @@ export default {
               border-bottom-left-radius: 6px;
               border-bottom-right-radius: 6px;
               width: 100%;
-              padding-left: 50px;
+              padding-left: 80px;
               // padding-right: 50px;
               * {
                 text-align: center;

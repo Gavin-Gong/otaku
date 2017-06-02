@@ -18,7 +18,7 @@
               前作「Into the Sky」公信榜单曲周榜取得第六位的人气剧伴作家泽野弘之，SawanoHiroyuki[nZk] Project通算第五张单曲主打歌曲《gravityWall》（春季动画《Re:CREATORS》片头曲）TV版开始配信。</p></li><li>
             <h3>盗墓笔记同人动画</h3>
             <p>
-              自制 盗墓笔记同人动画，<br>原作：南派三叔<br>配乐：吉田洁《祭》热风<br>工具：FlashCS3，PS，AE，premiere，cubase7，protools等<br>制作：好传摸鱼小组及很多很多朋友</p></li><li>
+              自制 盗墓笔记同人动画，<br>原作：南派三叔<br>配乐：吉田洁《祭》热风<br>工具：FlashCS3，PS，AE，premiere，cubase7，protools等<br>制作：好传摸鱼小组及很多很多朋友</p></li><li @click="$router.push({name: 'Detail'})">
             <h3>细品反叛的鲁路修</h3>
             <p>
               最近生活琐事越来越多，压力也是持续增大，年纪越来越大叔了就越来越不能随心所欲了，因此我自己对自己啥时候更新都不会清楚，只能说尽力吧...<br>by：阿拉垃圾垃圾君</p></li><li>
@@ -38,7 +38,7 @@
         </div>
         <div class="inner-wrapper">
           <section data-cat="music" class="cat">
-            <h2>音&nbsp;&nbsp;&nbsp;&nbsp;乐 &nbsp;&nbsp;/&nbsp;&nbsp; GET &nbsp;&nbsp;MORE</h2>
+            <h2>音&nbsp;&nbsp;&nbsp;&nbsp;乐 &nbsp;&nbsp;/<span class="more-link">&nbsp;&nbsp; GET &nbsp;&nbsp;MORE</span></h2>
             <div class="divider"></div>
             <div class="banner">
               <div class="banner-left">
@@ -116,7 +116,7 @@
             </div>
           </section>
           <section data-cat="comment" class="cat">
-            <h2>漫&nbsp;&nbsp;&nbsp;&nbsp;评 &nbsp;&nbsp;/&nbsp;&nbsp; GET &nbsp;&nbsp;MORE</h2>
+            <h2>漫&nbsp;&nbsp;&nbsp;&nbsp;评 &nbsp;&nbsp;/<span class="more-link">&nbsp;&nbsp; GET &nbsp;&nbsp;MORE</span></h2>
             <div class="divider"></div>
             <div class="banner">
               <div class="banner-left">
@@ -157,14 +157,14 @@
                       </div>
                     </div>
                   </li>
-                  <li>
+                  <li @click="$router.push({name: 'Detail', query: {id: 5}})">
                     <div class="inner-card">
                       <div class="slide">
-                        <p>開始的印記【Chima】</p>
+                        <p>空之境界【Chima】</p>
                         <p>2016-08-20</p>
                       </div>
                       <div class="footer-bar">
-                        <h4>開始的印記【Chima】</h4>
+                        <h4>空之境界</h4>
                         <ul>
                           <li><i class="icon-play"></i> 23W</li>
                           <li><i class="icon-star"></i> 17W</li>
@@ -194,7 +194,7 @@
             </div>
           </section>
           <section data-cat="exhibition" class="cat">
-            <h2>漫&nbsp;&nbsp;&nbsp;&nbsp;展 &nbsp;&nbsp;/&nbsp;&nbsp; GET &nbsp;&nbsp;MORE</h2>
+            <h2>MAD & MAV / <span class="more-link">GET &nbsp;&nbsp;MORE</span></h2>
             <div class="divider"></div>
             <div class="banner">
               <div class="banner-left">
@@ -212,8 +212,8 @@
             </div>
             <div class="card-collections">
               <div class="label">
-                <span>
-                  漫&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;评</span>/<span>
+                <span style="letter-spacing: 0px;">
+                  MAD & MAV</span>&nbsp;&nbsp;/<span>
                   推&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;荐
                 </span>
               </div>
@@ -272,7 +272,7 @@
             </div>
           </section>
           <section data-cat="tongren" class="cat">
-            <h2>同&nbsp;&nbsp;&nbsp;&nbsp;人 &nbsp;&nbsp;/&nbsp;&nbsp; GET &nbsp;&nbsp;MORE</h2>
+            <h2>同&nbsp;&nbsp;&nbsp;&nbsp;人 &nbsp;&nbsp;/<span class="more-link">&nbsp;&nbsp; GET &nbsp;&nbsp;MORE</span></h2>
             <div class="divider"></div>
             <div class="banner">
               <div class="banner-left">
@@ -391,6 +391,53 @@ export default {
   }
   .icon-bofang {
     font-size: 60px;
+  }
+  .more-link {
+    color: #fa9d4c;
+  }
+  [data-cat=music] .card-collection>ul>li {
+    &:nth-child(1) {
+      background: url(http://opazkqh2d.bkt.clouddn.com/17-6-1/58229559.jpg) top/contain no-repeat;
+    }
+    &:nth-child(2) {
+      background: url(http://opazkqh2d.bkt.clouddn.com/17-6-1/83188970.jpg) top/contain no-repeat;
+    }
+    &:nth-child(3) {
+      background: url(http://opazkqh2d.bkt.clouddn.com/17-6-1/31714379.jpg) top/contain no-repeat;
+    }
+  }
+  [data-cat=comment] .card-collection>ul>li {
+    &:nth-child(1) {
+      background: url(http://opazkqh2d.bkt.clouddn.com/17-6-1/88747732.jpg) top/contain no-repeat;
+    }
+    &:nth-child(2) {
+      background: url(http://opazkqh2d.bkt.clouddn.com/17-6-1/570793.jpg) top/contain no-repeat;
+    }
+    &:nth-child(3) {
+      background: url(http://opazkqh2d.bkt.clouddn.com/17-6-1/32501078.jpg) top/contain no-repeat;
+    }
+  }
+  [data-cat=exhibition] .card-collection>ul>li {
+    &:nth-child(1) {
+      background: url(http://opazkqh2d.bkt.clouddn.com/17-6-1/16482897.jpg) top/contain no-repeat;
+    }
+    &:nth-child(2) {
+      background: url(http://opazkqh2d.bkt.clouddn.com/17-6-1/9672701.jpg) top/contain no-repeat;
+    }
+    &:nth-child(3) {
+      background: url(http://opazkqh2d.bkt.clouddn.com/17-6-1/27823180.jpg) top/contain no-repeat;
+    }
+  }
+  [data-cat=tongren] .card-collection>ul>li {
+    &:nth-child(1) {
+      background: url(http://opazkqh2d.bkt.clouddn.com/17-6-1/84849512.jpg) top/contain no-repeat;
+    }
+    &:nth-child(2) {
+      background: url(http://opazkqh2d.bkt.clouddn.com/17-6-1/96791860.jpg) top/contain no-repeat;
+    }
+    &:nth-child(3) {
+      background: url(http://opazkqh2d.bkt.clouddn.com/17-6-1/51672819.jpg) top/contain no-repeat;
+    }
   }
 }
 </style>

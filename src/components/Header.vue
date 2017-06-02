@@ -1,14 +1,12 @@
 <template>
-    <header class="header" role="banner">
+    <header class="header" role="banner" :style="background">
       <div class="logo">
         <a href="">
           <img src="~img/logo.png" alt="Logo">
         </a>
       </div>
-      <div class="avatar" v-show="$store.state.isAuth">
-        <a href="">
-          <img src="~img/avatar.jpg" alt="Logo">
-        </a>
+      <div class="avatar" v-show="$store.state.isAuth" @click="$router.push({name: 'Profile'})">
+          <img :src="$store.state.userAvatar" alt="Logo">
       </div>
       <div class="left-wrapper">
         <nav class="nav" role="navigation">
@@ -17,16 +15,16 @@
               <router-link :to="{ name: 'Home' }">首页</router-link>
             </li>
             <li>
-              <router-link :to="{ name: 'Detail' }">漫评</router-link>
+              <router-link :to="{ name: 'Music', query: {type: 'comment'}}">漫评</router-link>
             </li>
             <li>
-              <router-link :to="{ name: 'Music' }">音乐</router-link>
+              <router-link :to="{ name: 'Music', query: {type: 'music'} }">音乐</router-link>
             </li>
             <li>
-              <router-link :to="{ name: 'Music' }">MAD / AMV</router-link>
+              <router-link :to="{ name: 'Music', query: {type: 'mad'} }">MAD / AMV</router-link>
             </li>
             <li>
-              <router-link :to="{ name: 'Music' }">同人</router-link>
+              <router-link :to="{ name: 'Music', query: {type: 'tongren'} }">同人</router-link>
             </li>
           </ul>
         </nav>
@@ -38,6 +36,11 @@
 
 <script>
   export default {
-
+    props: {
+      background: {
+        type: String,
+        default: ''
+      }
+    }
   }
 </script>

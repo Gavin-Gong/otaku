@@ -86,6 +86,7 @@ export default {
     if (this.$route.query && this.$route.query.id) {
       this.detailData = this[`detailData_${this.$route.query.id}`]
     }
+    window.scrollTo(0, 0)
   },
   data () {
     return {
@@ -163,7 +164,7 @@ export default {
         created_at: '2017-01-28',
         type: 'video',
       },
-      detailData_4: {
+      detailData_5: {
         commentList: [
           { avatar: this.avatar(60,60), name: '就是这样', created_at: '2017-04-11', body: '本編映像と並んで高い評価を受けた、劇場版「空の境界」の音楽世界。作曲家・梶浦由記自身によるベスト&リアレンジアルバムとして、全七章の旋律がここに甦る!映像に合わせて作曲された劇伴音楽を再編曲&新規録音し、独立した音楽作品として新たなるオリジナルマスターを制作。新作映像『劇場版「空の境界」終章 / 空の境界』のBGMも初収録!\n本专辑收录了《空之境界》8部剧场版“主要”BGM的mix版，每一首都是精品，敬请欣', model: '', children: [
             { avatar: this.avatar(60,60), name: '我是乖乖生', body: '顺序是小说的顺序，是乱序' },
@@ -193,8 +194,8 @@ export default {
     },
     handleTopReply() {
       this.detailData.commentList.unshift({
-        avatar: this.avatar_1,
-        name: '毕业答辩',
+        avatar: this.$store.state.userAvatar,
+        name: '毕业后你不是我的',
         body: this.topCommentField,
         created_at: '刚刚',
       })
@@ -202,8 +203,8 @@ export default {
     },
     handleReply(index) {
       this.detailData.commentList[index].children.push({
-        avatar: this.avatar_1,
-        name: '我',
+        avatar: this.$store.state.userAvatar,
+        name: '毕业后你不是我的',
         body: this.detailData.commentList[index].model
       })
       this.detailData.commentList[index].model = ''

@@ -1,15 +1,12 @@
 <template>
   <div id="music">
-    <x-header>
+    <x-header :background="headerBg">
       <div class="music-banner">
         <ul>
-          <li>Piano cover <i class="icon-music-play"></i></li>
-          <li>Piano cover <i class="icon-music-play"></i></li>
-          <li>Piano cover <i class="icon-music-play"></i></li>
-          <li>Piano cover <i class="icon-music-play"></i></li>
+          <li v-for="item in data.list" @click="$router.push({name: 'Detail', query: {id: 3}})">{{item}} <i class="icon-music-play"></i></li>
         </ul>
         <div class="desc-card">
-          <p>Aimer第3张全长专辑《DAWN》是“不眠之夜物语”的最终章，穿越不眠之夜，遇见午夜的太阳，然后，终于迎来真</p>
+          <p>{{data.intro}}</p>
           <div><i class="iconfont icon-chakan"></i></div>
         </div>
       </div>
@@ -26,7 +23,7 @@
                 :value="item">
               </el-option>
             </el-select>
-            <i class="iconfont icon-music"></i>
+            <i :class="['iconfont', `icon-${pageType}`]"></i>
             <!--<i class="iconfont icon-qiehuan"></i>-->
           </div>
           <ul class="cat-list">
@@ -72,7 +69,96 @@ export default {
     return {
       slecOptions: [ '最新', '最热', '排行' ],
       slecVal: '最新',
-      cardListData: _.shuffle(data.cardListData).slice(0, 9)
+      cardListData: _.shuffle(data.cardListData).slice(0, 9),
+      data: {
+        list: [
+          '钢琴版',
+          'Fate UBW 现场版 ',
+          'MAD 手书',
+          'pinao cover'
+        ],
+        intro: 'Aimer第3张全长专辑《DAWN》是“不眠之夜物语”的最终章，穿越不眠之夜，遇见午夜的太阳，然后，终于迎来真'
+      },
+      music_data: {
+        list: [
+          '钢琴版',
+          'Fate UBW 现场版 ',
+          'MAD 手书',
+          'pinao cover'
+        ],
+        intro: 'Aimer第3张全长专辑《DAWN》是“不眠之夜物语”的最终章，穿越不眠之夜，遇见午夜的太阳，然后，终于迎来真'
+      },
+      comment_data: {
+        list: [
+          '完结有槽点，完美石头门',
+          'Fate zero ',
+          '命运石之门音乐合集',
+          '命运石之门0'
+        ],
+        intro: '【石头门】非常巧妙的编剧把如此庞大而且繁杂的线索整合，又在情绪流上牢牢的把控住读者，是不可多得的好作品'
+      },
+      mad_data: {
+        list: [
+          '虐心向/MAD',
+          '燃向-为谁而战 ',
+          '言叶之庭的前世今生',
+          '新海诚'
+        ],
+        intro: '【四月谎】人只有在最伤心的时候，才知道真正需要的是谁的陪伴。只是很多时候，意识到时已为时已晚'
+      },
+      tongren_data: {
+        list: [
+          '信仰是为了虚幻的人',
+          '此生无悔入东方',
+          '来世愿生幻想乡',
+          '东方/MMD'
+        ],
+        intro: '东方同人音乐嘉年华（17/03/20）网易云→music.163.com/#/playlist?id=52804225'
+      },
+      type: 'music'
+    }
+  },
+  created () {
+    console.log('here')
+  },
+  computed: {
+    headerBg () {
+      if (this.pageType === 'music') {
+        return `background: url(${require('img/music-header.png')}) center top/contain no-repeat, url(${require('img/music-banner.png')}) center bottom/cover no-repeat`
+      } else if (this.pageType === 'comment') {
+        return `background: url(${require('img/music-header.png')}) center top/contain no-repeat, url(http://opazkqh2d.bkt.clouddn.com/17-6-2/8059730.jpg) center bottom/cover no-repeat`
+      } else if (this.pageType === 'mad') {
+        return `background: url(${require('img/music-header.png')}) center top/contain no-repeat, url(http://opazkqh2d.bkt.clouddn.com/17-6-2/2036231.jpg) center bottom/cover no-repeat`
+      } else if (this.pageType === 'tongren') {
+        return `background: url(${require('img/music-header.png')}) center top/contain no-repeat, url(http://opazkqh2d.bkt.clouddn.com/17-6-2/55416091.jpg) center bottom/cover no-repeat`
+      } else {
+        return ''
+      }
+    },
+    pageType () {
+      if (this.$route.query.type) {
+        return this.$route.query.type
+      } else {
+        return 'music'
+      }
+    }
+  },
+  watch: {
+    $route () {
+      // this.$forceUpdate()
+      console.log('update')
+      this.cardListData = _.shuffle(data.cardListData).slice(0, 9)
+      if (this.$route.query.type) {
+        if (this.$route.query.type === 'mad') {
+          this.data = this.mad_data
+        } else if (this.$route.query.type === 'tongren') {
+          this.data = this.tongren_data
+        } else if (this.$route.query.type === 'comment') {
+          this.data = this.comment_data
+        } else if (this.$route.query.type === 'music') {
+          this.data = this.music_data
+        }
+      }
     }
   }
 }
